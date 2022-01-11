@@ -3,7 +3,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="index3.php" class="brand-link">
       <img src="images/admin_images/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
@@ -36,19 +36,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="./index.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="./index2.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v2</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="./index3.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v3</p>
                 </a>
@@ -56,7 +56,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="pages/widgets.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Widgets
@@ -75,43 +75,43 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="pages/layout/top-nav.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Top Navigation</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                <a href="pages/layout/top-nav-sidebar.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Top Navigation + Sidebar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
+                <a href="pages/layout/boxed.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Boxed</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                <a href="pages/layout/fixed-sidebar.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Fixed Sidebar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-topnav.html" class="nav-link">
+                <a href="pages/layout/fixed-topnav.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Fixed Navbar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                <a href="pages/layout/fixed-footer.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Fixed Footer</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                <a href="pages/layout/collapsed-sidebar.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Collapsed Sidebar</p>
                 </a>
@@ -128,19 +128,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="pages/charts/chartjs.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>ChartJS</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="pages/charts/flot.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Flot</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="pages/charts/inline.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inline</p>
                 </a>
@@ -157,49 +157,49 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="pages/UI/general.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>General</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/icons.html" class="nav-link">
+                <a href="pages/UI/icons.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Icons</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
+                <a href="pages/UI/buttons.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Buttons</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/sliders.html" class="nav-link">
+                <a href="pages/UI/sliders.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sliders</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/modals.html" class="nav-link">
+                <a href="pages/UI/modals.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Modals & Alerts</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/navbar.html" class="nav-link">
+                <a href="pages/UI/navbar.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Navbar & Tabs</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/timeline.html" class="nav-link">
+                <a href="pages/UI/timeline.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Timeline</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/UI/ribbons.html" class="nav-link">
+                <a href="pages/UI/ribbons.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ribbons</p>
                 </a>
@@ -216,25 +216,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="pages/forms/general.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>General Elements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
+                <a href="pages/forms/advanced.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Advanced Elements</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
+                <a href="pages/forms/editors.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Editors</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
+                <a href="pages/forms/validation.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Validation</p>
                 </a>
@@ -251,19 +251,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
+                <a href="pages/tables/simple.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Simple Tables</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="pages/tables/data.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>DataTables</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
+                <a href="pages/tables/jsgrid.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>jsGrid</p>
                 </a>
@@ -272,7 +272,7 @@
           </li>
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="pages/calendar.php" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Calendar
@@ -281,7 +281,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/gallery.html" class="nav-link">
+            <a href="pages/gallery.php" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Gallery
@@ -298,19 +298,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                <a href="pages/mailbox/mailbox.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inbox</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
+                <a href="pages/mailbox/compose.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Compose</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                <a href="pages/mailbox/read-mail.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Read</p>
                 </a>
@@ -327,49 +327,49 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
+                <a href="pages/examples/invoice.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Invoice</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/profile.html" class="nav-link">
+                <a href="pages/examples/profile.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/e-commerce.html" class="nav-link">
+                <a href="pages/examples/e-commerce.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>E-commerce</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/projects.html" class="nav-link">
+                <a href="pages/examples/projects.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Projects</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/project-add.html" class="nav-link">
+                <a href="pages/examples/project-add.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Add</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/project-edit.html" class="nav-link">
+                <a href="pages/examples/project-edit.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Edit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/project-detail.html" class="nav-link">
+                <a href="pages/examples/project-detail.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project Detail</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/contacts.html" class="nav-link">
+                <a href="pages/examples/contacts.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Contacts</p>
                 </a>
@@ -386,73 +386,73 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/login.html" class="nav-link">
+                <a href="pages/examples/login.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Login</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/register.html" class="nav-link">
+                <a href="pages/examples/register.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Register</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/forgot-password.html" class="nav-link">
+                <a href="pages/examples/forgot-password.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Forgot Password</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/recover-password.html" class="nav-link">
+                <a href="pages/examples/recover-password.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Recover Password</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/lockscreen.html" class="nav-link">
+                <a href="pages/examples/lockscreen.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lockscreen</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/legacy-user-menu.html" class="nav-link">
+                <a href="pages/examples/legacy-user-menu.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Legacy User Menu</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/language-menu.html" class="nav-link">
+                <a href="pages/examples/language-menu.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Language Menu</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/404.html" class="nav-link">
+                <a href="pages/examples/404.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Error 404</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/500.html" class="nav-link">
+                <a href="pages/examples/500.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Error 500</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/pace.html" class="nav-link">
+                <a href="pages/examples/pace.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pace</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/blank.html" class="nav-link">
+                <a href="pages/examples/blank.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Blank Page</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="starter.html" class="nav-link">
+                <a href="starter.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
