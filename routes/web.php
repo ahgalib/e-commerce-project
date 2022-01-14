@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\adminLoginCon;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin.admin');
+    return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('/admin')->namespace('Admin')->group(function(){
+     Route::match(['get','post'],'/',[adminLoginCon::class,'index']);
+});
