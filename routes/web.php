@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminLoginCon;
+use App\Http\Controllers\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::prefix('/admin')->namespace('Admin')->group(function(){
-     Route::match(['get','post'],'/',[adminLoginCon::class,'index']);
+   
+    Route::match(['get','post'],'/',[adminLoginCon::class,'index']);
+    Route::group(['middleware'=>['admin']],function(){
+        Route::get('/dashboard',[Admin::class,'index']);  
+    });
 });
+  

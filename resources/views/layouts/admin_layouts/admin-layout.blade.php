@@ -17,7 +17,7 @@
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{url('plugins/jqvmap/jqvmap.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="admin_css/adminlte.min.css">
+  <link rel="stylesheet" href="{{url('admin_css/adminlte.min.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{url('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
@@ -75,10 +75,10 @@
 <!-- overlayScrollbars -->
 <script src="{{url('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="admin_js/adminlte.js"></script>
+<script src="{{url('admin_js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="admin_js/pages/dashboard.js"></script>
+<script src="{{url('admin_js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="admin_js/demo.js"></script>
+<script src="{{url('admin_js/demo.js')}}"></script>
 </body>
 </html>
