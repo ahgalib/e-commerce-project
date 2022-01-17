@@ -8,24 +8,22 @@ use Illuminate\Support\Facades\Auth;
 
 class adminLoginCon extends Controller
 {
+    
     public function index(Request $req){
         
         return view('admin.admin_login');
     }
 
     public function login(Request $request){
-        // $data = $req->input();
-        //  if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password']])){
-        //      return redirect('admin/dashboard');
-        //     // return redirect()->back();
-        //  }else{
-        //     return redirect()->back();
-        //  }
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required',
+        ]);
         $creds = $request->only('email','password');
         if(Auth::guard('admin')->attempt($creds)){
             return redirect('admin/dashboard');
         }else{
-            return back();
+            return back()->with('fail','Incorrect credentials');
         }
     }
 

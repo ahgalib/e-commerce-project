@@ -30,6 +30,11 @@
 
       <form action="/admin/login" method="post">
         @csrf
+        @if(Session::get('fail'))
+          <div class="alert alert-danger">
+            {{Session::get('fail')}}
+          </div>
+        @endif
         <div class="input-group mb-3">
           <input type="email" name="email" id="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
@@ -38,6 +43,7 @@
             </div>
           </div>
         </div>
+        <span class="text-danger">@error('email'){{$message}}@enderror</span>
         <div class="input-group mb-3">
           <input type="password" name="password" id="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
@@ -46,6 +52,7 @@
             </div>
           </div>
         </div>
+        <span class="text-danger">@error('password'){{$message}}@enderror</span>
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
