@@ -19,12 +19,18 @@ class adminLoginCon extends Controller
             'email'=>'required',
             'password'=>'required',
         ]);
-        $creds = $request->only('email','password');
+         $creds = $request->only('email','password');
         if(Auth::guard('admin')->attempt($creds)){
-            return redirect('admin/dashboard');
+             return redirect('admin/dashboard');
         }else{
-            return back()->with('fail','Incorrect credentials');
+             return back()->with('fail','Incorrect credentials');
         }
+         //THIS IS ANOTHER WAY FOR LOGIN
+        // if(Auth::guard('admin')->attempt(['email'=>$request['email'],'password'=>$request['password']])){
+        //     return redirect('admin/dashboard');
+        // }else{
+        //     return back()->with('fail','Incorrect credentials');
+        // }
     }
 
     public function logout(){

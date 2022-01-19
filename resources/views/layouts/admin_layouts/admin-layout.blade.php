@@ -54,6 +54,7 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
 <!-- Bootstrap 4 -->
 <script src="{{url('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->
@@ -78,6 +79,8 @@
 <script src="{{url('admin_js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('admin_js/pages/dashboard.js')}}"></script>
+<!-- admin_jqery file -->
+<script src="{{url('admin_js/admin_script.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('admin_js/demo.js')}}"></script>
 </body>

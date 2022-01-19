@@ -22,16 +22,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- Route::prefix('/admin')->namespace('Admin')->group(function(){
-   
-//     //Route::match(['get','post'],'/',[adminLoginCon::class,'index']);
-//     Route::group(['middleware'=>['admin']],function(){
-//         Route::get('/dashboard',[Admin::class,'index']);  
-//     });
-
-Route::get('dashboard',[Admin::class,'index'])->middleware(['admin']);  
-Route::get('login',[adminLoginCon::class,'index']);
-Route::post('login',[adminLoginCon::class,'login']);
-Route::get('logout',[adminLoginCon::class,'logout']);
+Route::prefix('/admin')->namespace('Admin')->group(function(){
+    Route::get('login',[adminLoginCon::class,'index']);
+    Route::post('login',[adminLoginCon::class,'login']);
+    Route::group(['middleware'=>['admin']],function(){
+        Route::get('/dashboard',[Admin::class,'index']); 
+        Route::get('/setting',[Admin::class,'setting_index']); 
+        Route::get('logout',[adminLoginCon::class,'logout']); 
+        Route::post('check_current_password',[Admin::class,'checkCurrentPassword']); 
+    });
 });
  
