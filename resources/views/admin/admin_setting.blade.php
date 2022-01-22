@@ -31,12 +31,21 @@
                             <h3 class="card-title">Admin Setting</h3>
                         </div><!-- /.card-header -->
                         <!-- form start -->
-                        <form method="post" action="{{ url('admin/updatePassword') }}" name="updatePasswordForm" id="updatePasswordForm">
+                        <form method="post" action="{{ url('admin/updatePassword') }}">
+                            @if(Session::get('fail'))
+                                <div class="alert alert-danger mt-3">
+                                    {{Session::get('fail')}}
+                                </div>
+                            @elseif(Session::get('success'))
+                                <div class="alert alert-success mt-3">
+                                    {{Session::get('success')}}
+                                </div>
+                            @endif
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" id="name" value="{{$data['name']}}">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" id="name" value="{{$data['name']}}" readOnly>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
@@ -45,15 +54,22 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Current Password</label>
                                     <input type="password" class="form-control" name="current_password" id="current_password" placeholder="Enter current password">
+                                    <span style="color:red;">@error('current_password'){{$message}}@enderror</span>
                                 </div>
                                 <span id="chkpsw"></span>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">New Password</label>
-                                    <input type="password" class="form-control" name="new_password" id="new_password" placeholder="Enter new password">
+                                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Enter your new password" >
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Confirm Password</label>
-                                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm new password">
+                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="confirm your new password">
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -72,3 +88,7 @@
   <!-- /.content-wrapper -->
 
   @endsection
+
+
+
+  

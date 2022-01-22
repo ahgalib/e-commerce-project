@@ -79,9 +79,10 @@
 <script src="{{url('admin_js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{url('admin_js/pages/dashboard.js')}}"></script>
-<!-- admin_jqery file -->
-<script src="{{url('admin_js/admin_script.js')}}"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('admin_js/demo.js')}}"></script>
+<!-- admin_jqery file -->
+<!-- <script src="admin_js/admin_script.js"></script> -->
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminLoginCon;
-use App\Http\Controllers\Admin;
+use App\Http\Controllers\adminCon;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +26,11 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
     Route::get('login',[adminLoginCon::class,'index']);
     Route::post('login',[adminLoginCon::class,'login']);
     Route::group(['middleware'=>['admin']],function(){
-        Route::get('/dashboard',[Admin::class,'index']); 
-        Route::get('/setting',[Admin::class,'setting_index']); 
+        Route::get('/dashboard',[adminCon::class,'index']); 
+        Route::get('/setting',[adminCon::class,'setting_index']); 
         Route::get('logout',[adminLoginCon::class,'logout']); 
-        Route::post('check_current_password',[Admin::class,'checkCurrentPassword']); 
+       // Route::post('/check_current_password',[Admin::class,'checkCurrentPassword']); 
+       Route::post('/updatePassword',[adminCon::class,'updateCurrentPassword']); 
     });
 });
  
