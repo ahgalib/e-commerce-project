@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard</h1>
+                    <h1 class="m-0 text-dark">Admin Details</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -28,11 +28,11 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Admin Password Setting</h3>
+                            <h3 class="card-title">Admin Details</h3>
                         </div><!-- /.card-header -->
                         <!-- form start -->
-                        <form method="post" action="{{ url('admin/updatePassword') }}">
-                            @if(Session::get('fail'))
+                        <form method="post" action="{{ url('admin/updateAdminDetails') }}" enctype="multipart/form-data">
+                            <!-- @if(Session::get('fail'))
                                 <div class="alert alert-danger mt-3">
                                     {{Session::get('fail')}}
                                 </div>
@@ -40,36 +40,42 @@
                                 <div class="alert alert-success mt-3">
                                     {{Session::get('success')}}
                                 </div>
-                            @endif
+                            @endif -->
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" id="name" value="{{$data['name']}}" readOnly>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{$data['name']}}">
+                                    <span style="color:red;">@error('name'){{$message}}@enderror</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
-                                    <input class="form-control" readOnly  value="{{$data['email']}}">
+                                    <input type="email" class="form-control" name="email" value="{{$data['email']}}">
+                                    <span style="color:red;">@error('email'){{$message}}@enderror</span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Current Password</label>
-                                    <input type="password" class="form-control" name="current_password" id="current_password" placeholder="Enter current password">
-                                    <span style="color:red;">@error('current_password'){{$message}}@enderror</span>
+                                    <label for="type">Type</label>
+                                    @if(Auth::guard('admin')->user()->type == 'admin')
+                                    <select name="type" id="" class="form-control">
+                                        <option value="admin">Admin</option>
+                                        <option value="subadmin">SubAdmin</option>
+                                    </select>
+                                    @else
+                                        <input type="text" class="form-control" name="type" placeholder="Enter type" value="{{$data['type']}}">
+                                        <span style="color:red;">@error('type'){{$message}}@enderror</span>
+                                    @endif
                                 </div>
-                                <span id="chkpsw"></span>
+                               
                                 <div class="form-group">
-                                    <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Enter your new password" >
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <label for="mobile" class="col-md-4 col-form-label text-md-end">{{ __('Mobile') }}</label>
+                                    <input  type="number" class="form-control" name="mobile" placeholder="Enter your mobile number" value="{{$data['mobile']}}">
+                                    <span style="color:red;">@error('mobile'){{$message}}@enderror</span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="confirm your new password">
+                                    <label for="image">Image</label>
+                                    <input type="file" class="form-control" name="image">
+                                    <!-- <span style="color:red;">@error('current_password'){{$message}}@enderror</span> -->
                                 </div>
                             </div>
                             <!-- /.card-body -->

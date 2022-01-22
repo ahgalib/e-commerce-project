@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin;
 use Illuminate\Support\Facades\Auth;
 
+
 class adminLoginCon extends Controller
 {
-    
     public function index(Request $req){
         
         return view('admin.admin_login');
@@ -19,7 +20,7 @@ class adminLoginCon extends Controller
             'email'=>'required',
             'password'=>'required',
         ]);
-         $creds = $request->only('email','password');
+        $creds = $request->only('email','password');
         if(Auth::guard('admin')->attempt($creds)){
              return redirect('admin/dashboard');
         }else{
@@ -39,4 +40,3 @@ class adminLoginCon extends Controller
         
     }
 }
-

@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\adminLoginCon;
-use App\Http\Controllers\adminCon;
+use App\Http\Controllers\admin\adminLoginCon;
+use App\Http\Controllers\admin\adminCon;
+use App\Http\Controllers\admin\sectionCon;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::prefix('/admin')->namespace('Admin')->group(function(){
+Route::prefix('/admin')->group(function(){
     Route::get('login',[adminLoginCon::class,'index']);
     Route::post('login',[adminLoginCon::class,'login']);
+
     Route::group(['middleware'=>['admin']],function(){
         Route::get('/dashboard',[adminCon::class,'index']); 
         Route::get('/setting',[adminCon::class,'setting_index']); 
         Route::get('logout',[adminLoginCon::class,'logout']); 
-       // Route::post('/check_current_password',[Admin::class,'checkCurrentPassword']); 
+       //Route::post('/check_current_password',[adminCon::class,'checkCurrentPassword']); //ajac check password
        Route::post('/updatePassword',[adminCon::class,'updateCurrentPassword']); 
+       Route::get('/details',[adminCon::class,'showAdminDetailsPage']); 
+       Route::post('/updateAdminDetails',[adminCon::class,'updateAdminDetailsPage']); 
+
+       //SECTION
+       Route::get('/section',[sectionCon::class,'showSectionPage']); 
+     
     });
 });
  
