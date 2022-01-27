@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\adminLoginCon;
 use App\Http\Controllers\admin\adminCon;
 use App\Http\Controllers\admin\sectionCon;
+use App\Http\Controllers\admin\categoryCon;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::prefix('/admin')->group(function(){
 
        //SECTION
        Route::get('/section',[sectionCon::class,'showSectionPage']); 
+       //CATEGORIES
+       Route::get('/categories',[categoryCon::class,'showCategoriesPage']); 
+       Route::get('/addcategories',[categoryCon::class,'showAddCategoriesPage']); 
      
     });
 });

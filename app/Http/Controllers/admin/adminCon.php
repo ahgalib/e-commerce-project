@@ -67,3 +67,4 @@ class adminCon extends Controller
         return redirect('/admin/dashboard');
     }
 }
+
