@@ -20,13 +20,16 @@ class adminCon extends Controller
     }
 
     // public function checkCurrentPassword(Request $request){
-    //     $data =  $request->request();
-    //    // echo "<pre>";print_r($data);die;
-    //      if(Hash::check($data['current_password'],Auth::guard('admin')->user()->password)){
-    //          echo "true";
-    //      }else{
-    //      echo "false";
-    //      }
+    //     if($request->ajax()){
+    //         $data =  $request->all();
+    //          echo "<pre>";print_r($data);die;
+    //         // if(Hash::check($data['current_password'],Auth::guard('admin')->user()->password)){
+    //         //     echo "true";
+    //         // }else{
+    //         // echo "false";
+    //         // }
+    //     }
+        
     //  }
 
     public function updateCurrentPassword(Request $request){

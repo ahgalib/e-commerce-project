@@ -32,17 +32,19 @@ Route::prefix('/admin')->group(function(){
         Route::get('/dashboard',[adminCon::class,'index']); 
         Route::get('/setting',[adminCon::class,'setting_index']); 
         Route::get('logout',[adminLoginCon::class,'logout']); 
-       //Route::post('/check_current_password',[adminCon::class,'checkCurrentPassword']); //ajac check password
+       //Route::post('/check-current-password',[adminCon::class,'checkCurrentPassword']); //ajac check password
        Route::post('/updatePassword',[adminCon::class,'updateCurrentPassword']); 
        Route::get('/details',[adminCon::class,'showAdminDetailsPage']); 
        Route::post('/updateAdminDetails',[adminCon::class,'updateAdminDetailsPage']); 
 
        //SECTION
        Route::get('/section',[sectionCon::class,'showSectionPage']); 
+       Route::post('/update_section_status',[sectionCon::class,'updateSectionStatus']); 
        //CATEGORIES
        Route::get('/categories',[categoryCon::class,'showCategoriesPage']); 
        Route::get('/addcategories',[categoryCon::class,'showAddCategoriesPage']); 
-     
+       Route::post('/saveAddCategory',[categoryCon::class,'saveAddCategory']); 
+       
     });
 });
  

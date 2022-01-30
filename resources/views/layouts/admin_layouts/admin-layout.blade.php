@@ -98,7 +98,8 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/adminlte.js')}}"></script>
+<!-- <script src="{{url('dist/js/jquery-3.5.1.min.js')}}"></script> -->
 
- <!-- <script src="{{ url('dist/js/admin_script.js') }}"></script> -->
+ <script src="{{ url('dist/js/admin_script.js') }}"></script>
 </body>
 </html>

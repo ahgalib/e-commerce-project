@@ -51,7 +51,7 @@
                                             <td>{{$categories->parent_id}}</td>
                                             <td>{{$categories->section_id}}</td>
                                             <td>{{$categories->category_name}}</td>
-                                            <td>{{$categories->category_image}}</td>
+                                            <td><img src="/storage/{{$categories->category_image}}" style="width:70px;height:50px;"alt=""></td>
                                             <td>{{$categories->category_discount}}</td>
                                             <td>{{$categories->description}}</td>
                                             <td>{{$categories->status}}</td>
