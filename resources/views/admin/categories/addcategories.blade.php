@@ -42,12 +42,8 @@
                                     <input type="text" class="form-control" name="category_name" id="category_name">
                                     <span style="color:red;">@error('category_name'){{$message}}@enderror</span>
                                 </div>
-                                <div class="form-group">
-                                    <label>Select Category Level</label>
-                                    <select name="parent_id" id="parent_id" class="form-control select2" style="width: 100%;">
-                                        <option value="0">Choose One</option>
-                                    </select>
-                                    <span style="color:red;">@error('parent_id'){{$message}}@enderror</span>
+                                <div id="appendCategory">
+                                    @include('admin.categories.append_category_level')
                                 </div>
                             </div><!-- /.col -->
                         

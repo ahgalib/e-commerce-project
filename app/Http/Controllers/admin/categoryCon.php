@@ -21,7 +21,7 @@ class categoryCon extends Controller
 
     public function saveAddCategory(Request $req){
         $req->validate([
-            'parent_id'=>'required',
+           // 'parent_id'=>'required',
             'section_id'=>'required',
             'category_name'=>'required',
             'category_image'=>'required',
@@ -43,6 +43,17 @@ class categoryCon extends Controller
             'meta_keywords'=>$req->meta_keywords,
             'status'=>$req->status,
         ]);
-        return back();
+        return redirect('admin/categories');
+    }
+
+    public function appendCategoriesLevel(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            
+            $getCategory = category::with('subcategories')->where(['section_id'=>$data['section_id'],'parent_id'=>0,'status'=>1])->get();
+            $getCategories = json_decode(json_encode($getCategory),true); //na dileo to hoy
+            // echo "<pre>";print_r($getCategories);die;
+            return view('admin.categories.append_category_level',['getCategory'=>$getCategory]);
+        }
     }
 }
