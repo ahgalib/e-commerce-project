@@ -2,7 +2,7 @@
     
     <label>Select Category Level</label>
     <select name="parent_id" id="parent_id" class="form-control select2" style="width: 100%;">
-        <option value="0">select your category or sub-category</option>
+        <option value="0">Main Category</option>
         @if(!empty($getCategory))
             @foreach($getCategory as $category)
                 <option value="{{$category['id']}}">{{$category['category_name']}}</option>

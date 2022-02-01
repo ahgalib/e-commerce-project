@@ -14,7 +14,7 @@
   <!-- icheck bootstrap -->
   <link rel="stylesheet" href="{{url('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{url('admin_css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{url('dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -80,7 +80,7 @@
 <!-- Bootstrap 4 -->
 <script src="{{url('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{url('admin_js/adminlte.js')}}"></script>
+<script src="{{url('dist/js//adminlte.js')}}"></script>
 
 </body>
 </html>

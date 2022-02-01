@@ -10,7 +10,7 @@ use App\Models\section;
 class categoryCon extends Controller
 {
     public function showCategoriesPage(){
-        $data = category::all();
+        $data = category::get();
         return view('admin.categories.categories',compact('data'));
     }
 
@@ -51,9 +51,36 @@ class categoryCon extends Controller
             $data = $request->all();
             
             $getCategory = category::with('subcategories')->where(['section_id'=>$data['section_id'],'parent_id'=>0,'status'=>1])->get();
-            $getCategories = json_decode(json_encode($getCategory),true); //na dileo to hoy
+            $getCategories = json_decode(json_encode($getCategory),true);//data aslo ki na seita dekhar jonno
             // echo "<pre>";print_r($getCategories);die;
             return view('admin.categories.append_category_level',['getCategory'=>$getCategory]);
         }
+    }
+
+    public function showEditCategoriesPage($category){
+       
+        $category = category::find($category);
+         $data = section::all();
+        $getCategory = category::with('subcategories')->where(['parent_id'=>0,'section_id'=>$category['section_id']])->get();
+        // $getCategory = json_decode(json_encode($getCategory),true);
+        // echo "<pre>";print_r($getCategory);die;
+       
+        return view('admin.categories.editcategory',['category'=>$category,'data'=>$data,'getCategory'=>$getCategory]);
+    }
+
+    public function saveEditCategoriesPage(category $category,Request $request){
+        $data = request()->validate([
+            // 'parent_id'=>'required',
+             'section_id'=>'required',
+             'category_name'=>'required',
+             'category_image'=>'',
+             'description'=>'required',
+             'status'=>'required'
+         ]);
+        
+         category::with('subcategories')->where(['id'=>$category['id']])->update(
+             $data
+            );
+         return redirect('admin/categories');
     }
 }

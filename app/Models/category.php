@@ -13,4 +13,8 @@ class category extends Model
     public function subcategories(){
         return $this->hasMany(category::class,'parent_id')->where('status',1);
     }
+
+    public function section(){
+        return $this->belongsTo(section::class);
+      }
 }

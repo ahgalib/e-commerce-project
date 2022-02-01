@@ -34,27 +34,29 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <!-- <th>Parent Id</th>
-                                        <th>Section Id</th> -->
+                                         <!-- <th>Parent Id</th> -->
+                                        <th>Section Name</th> 
                                         <th>Category Name</th>
                                         <th>Category Image</th>
                                         <th>Category Discount</th>
                                         <th>Description</th>
                                         <th>Status</th>
-                                       
+                                        <th colspan="2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($data as $categories)
                                         <tr>
                                             <td>{{$categories->id}}</td>
-                                            <!-- <td>{{$categories->parent_id}}</td>
-                                            <td>{{$categories->section_id}}</td> -->
+                                             <!-- <td>{{$categories->parent_id}}</td> -->
+                                            <td>{{$categories->section->name}}</td>
                                             <td>{{$categories->category_name}}</td>
                                             <td><img src="/storage/{{$categories->category_image}}" style="width:70px;height:50px;"alt=""></td>
                                             <td>{{$categories->category_discount}}</td>
                                             <td>{{$categories->description}}</td>
                                             <td>{{$categories->status}}</td>
+                                            <td><a href="editcategories/{{$categories->id}}"><button class="btn btn-warning"> Edit</button></a></td>
+                                            <td>Delete</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
