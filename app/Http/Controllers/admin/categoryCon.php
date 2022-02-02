@@ -35,7 +35,7 @@ class categoryCon extends Controller
             'category_name'=>$req->category_name,
            
             'category_image'=>request('category_image')->store('category_image','public'),
-            'category_descount'=>$req->category_descount,
+            'category_discount'=>$req->category_discount,
             'description'=>$req->description,
             'url'=>$req->url,
             'meta_title'=>$req->meta_title,
@@ -43,7 +43,10 @@ class categoryCon extends Controller
             'meta_keywords'=>$req->meta_keywords,
             'status'=>$req->status,
         ]);
-        return redirect('admin/categories');
+        //This is another way to show message
+        // $successMessage = "Category Added Successfully";
+        // session::flash('addSuccess',$successMessage);
+        return redirect('admin/categories')->with('addSuccess','Category Added Successfully');
     }
 
     public function appendCategoriesLevel(Request $request){
@@ -58,7 +61,6 @@ class categoryCon extends Controller
     }
 
     public function showEditCategoriesPage($category){
-       
         $category = category::find($category);
          $data = section::all();
         $getCategory = category::with('subcategories')->where(['parent_id'=>0,'section_id'=>$category['section_id']])->get();
@@ -71,16 +73,31 @@ class categoryCon extends Controller
     public function saveEditCategoriesPage(category $category,Request $request){
         $data = request()->validate([
             // 'parent_id'=>'required',
-             'section_id'=>'required',
-             'category_name'=>'required',
-             'category_image'=>'',
-             'description'=>'required',
-             'status'=>'required'
-         ]);
+            'section_id'=>'required',
+            'category_name'=>'required',
+            'category_image'=>'',
+            'category_discount'=>'',
+            'description'=>'required',
+            'url'=>'',
+            'meta_title'=>'',
+            'meta_description'=>'',
+            'meta_keywords'=>'',
+            'status'=>'required'
+        ]);
+        if(request('category_image')){
+            $imagePath = request('category_image')->store('category_image','public');
+            $imageArray = ['category_image'=>$imagePath];
+        }
+         category::with('subcategories')->where(['id'=>$category['id']])->update(array_merge(
+            $data,
+            $imageArray ??[],
+         ));
         
-         category::with('subcategories')->where(['id'=>$category['id']])->update(
-             $data
-            );
-         return redirect('admin/categories');
+         return redirect('admin/categories')->with('editSuccess','Category Edited Successfully');
+    }
+
+    public function deleteCategory($category){
+        category::find($category)->delete();
+        return back()->with('success','Category Deleted Successfully');
     }
 }

@@ -78,6 +78,11 @@
                                             <span class="input-group-text" id="">Upload</span>
                                         </div>
                                     </div>
+                                    @if(!empty($category['category_image']))
+                                        <div>
+                                            <img src="/storage/{{$category['category_image']}}" alt="" style="width:100px;height:80px;">
+                                        </div>
+                                    @endif
                                     <span style="color:red;">@error('category_image'){{$message}}@enderror</span>
                                 </div>
                                 <!-- /.form-group -->

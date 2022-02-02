@@ -46,7 +46,8 @@ Route::prefix('/admin')->group(function(){
        Route::post('/saveAddCategory',[categoryCon::class,'saveAddCategory']);
        Route::post('/append-categories-level',[categoryCon::class,'appendCategoriesLevel']); 
        Route::get('/editcategories/{category}',[categoryCon::class,'showEditCategoriesPage']);  
-       Route::patch('/saveeditcategories/{category}',[categoryCon::class,'saveEditCategoriesPage']);  
+       Route::patch('/saveeditcategories/{category}',[categoryCon::class,'saveEditCategoriesPage']); 
+       Route::get('/deletecategories/{category}',[categoryCon::class,'deleteCategory']);   
        
        
     });

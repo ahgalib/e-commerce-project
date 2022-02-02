@@ -24,6 +24,21 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                @if(Session::get('success'))
+                    <div class="alert alert-success">
+                        {{Session::get('success')}}
+                    </div>
+                @endif
+                @if(Session::get('editSuccess'))
+                    <div class="alert alert-success">
+                        {{Session::get('editSuccess')}}
+                    </div>
+                @endif
+                @if(Session::get('addSuccess'))
+                    <div class="alert alert-success">
+                        {{Session::get('addSuccess')}}
+                    </div>
+                @endif
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -45,9 +60,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($data as $categories)
+                                    @foreach($data as $key=> $categories)
                                         <tr>
-                                            <td>{{$categories->id}}</td>
+                                            <td>{{$key+1}}</td>
                                              <!-- <td>{{$categories->parent_id}}</td> -->
                                             <td>{{$categories->section->name}}</td>
                                             <td>{{$categories->category_name}}</td>
@@ -56,7 +71,7 @@
                                             <td>{{$categories->description}}</td>
                                             <td>{{$categories->status}}</td>
                                             <td><a href="editcategories/{{$categories->id}}"><button class="btn btn-warning"> Edit</button></a></td>
-                                            <td>Delete</td>
+                                            <td><a href="deletecategories/{{$categories->id}}"><button class="btn btn-danger">Delete</button></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
