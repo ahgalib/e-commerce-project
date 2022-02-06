@@ -53,5 +53,53 @@ $(document).ready(function(){
             }
         })
     })
+
+    //alert for delete category
+    // $(".deleteButton").click(function(){
+    //     var name = $(this).attr('name');
+    //     if(confirm("Are you sure to delete this "+ name + " ??")){
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+    // })
+
+    //using sweetalert for deleting
+    $(".deleteButton").click(function(){
+        var record = $(this).attr('record');
+        var recordId = $(this).attr('recordId');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+              window.location.href = "deletecategories"+"/"+recordId;
+            }
+           
+        })
+    })
+
+    //another sweetalert for success edti
+    $("#sweetAlert").click(function(){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+            });
+            //window.location.href = "admin/category";
+    })
+    
        
 });

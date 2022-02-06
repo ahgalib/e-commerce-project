@@ -45,7 +45,7 @@
                             <h3 class="card-title">DataTable with default features</h3>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="section" class="table table-bordered table-striped">
+                            <table id="product" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -60,19 +60,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($data as $key=> $categories)
+                                    @foreach($data as $key=> $products)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                             <!-- <td>{{$categories->parent_id}}</td> -->
-                                            <td>{{$categories->section->name}}</td>
-                                            <td>{{$categories->category_name}}</td>
-                                            <td><img src="/storage/{{$categories->category_image}}" style="width:70px;height:50px;"alt=""></td>
-                                            <td>{{$categories->category_discount}}</td>
-                                            <td>{{$categories->description}}</td>
-                                            <td>{{$categories->status}}</td>
-                                            <td><a href="editcategories/{{$categories->id}}"><button class="btn btn-warning"> Edit</button></a></td>
-                                            <td><a href="javascript:void(0)"class="deleteButton"  record="categories" recordId="{{$categories->id}}"><button class="btn btn-danger">Delete</button></a></td>
-                                            <!-- href="deletecategories/{{$categories->id}}" link for delete so that we can use sweet alert -->
+                                          
+                                            <td>{{$products->product_name}}</td>
+                                            <td>{{$products->product_code}}</td>
+                                           
+                                            <td>{{$products->product_color}}</td>
+                                            <td>{{$products->product_price}}</td>
+                                            <td>{{$products->status}}</td>
+                                            <td><a href="editcategories/{{$products->id}}"><button class="btn btn-warning"> Edit</button></a></td>
+                                            <td><a href="javascript:void(0)"class="deleteButton"  record="categories" recordId="{{$products->id}}"><button class="btn btn-danger">Delete</button></a></td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>

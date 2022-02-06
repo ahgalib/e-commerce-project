@@ -93,7 +93,8 @@ class categoryCon extends Controller
             $imageArray ??[],
          ));
         
-         return redirect('admin/categories')->with('editSuccess','Category Edited Successfully');
+         return redirect('admin/categories')->with('editSuccess','Category updated Successfully');
+         
     }
 
     public function deleteCategory($category){

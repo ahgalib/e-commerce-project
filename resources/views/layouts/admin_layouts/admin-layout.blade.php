@@ -82,6 +82,8 @@
 <script src="{{ url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ url('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ url('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<!-- Sweet Alert -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   $(function () {
     $("#section").DataTable({

@@ -118,8 +118,8 @@
                             </div>
                             <div class="col-6 col-sm-6">
                                 <div class="form-group">
-                                    <label for="category_name">Status</label>
-                                    <input type="text" class="form-control" name="status" id="status">
+                                    <label for="category_name"></label>
+                                    <input type="hidden" class="form-control" name="status" id="status" value="1">
                                     <span style="color:red;">@error('status'){{$message}}@enderror</span>
                                 </div>
                             </div>
@@ -127,7 +127,7 @@
                         </div> <!-- /.row -->
                     </div><!-- /.card-body -->
                     <div class="card-footer">
-                        <button class="btn btn-primary">Add Category</button>
+                        <button class="btn btn-primary" id="sweetAlert">Add Category</button>
                     </div>
                 </div><!-- /.card -->
             </form>

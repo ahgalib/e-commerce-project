@@ -69,7 +69,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Categories
+                Cataloges
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -91,9 +91,9 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/addcategories') }}" class="nav-link">
+                <a href="{{ url('admin/products') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p></p>
+                  <p>Product</p>
                 </a>
               </li>
             </ul>

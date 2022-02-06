@@ -146,10 +146,11 @@
                         </div> <!-- /.row -->
                     </div><!-- /.card-body -->
                     <div class="card-footer">
-                        <button class="btn btn-primary">Add Category</button>
+                        <button class="btn btn-primary" id="sweetAlert">Update Category</button>
                     </div>
                 </div><!-- /.card -->
             </form>
+          
         </div><!-- /.container-fluid -->
     </section><!-- /.content -->
 </div> <!-- /.content-wrapper -->
