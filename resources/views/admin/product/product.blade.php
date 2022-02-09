@@ -50,10 +50,12 @@
                                     <tr>
                                         <th>Id</th>
                                          <!-- <th>Parent Id</th> -->
+                                        <th>Product Name</th> 
+                                        <th>Category Name</th> 
                                         <th>Section Name</th> 
-                                        <th>Category Name</th>
-                                        <th>Category Image</th>
-                                        <th>Category Discount</th>
+                                        <th>Product Code</th>
+                                        <th>Product Color</th>
+                                        <th>Product Price</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th colspan="2">Action</th>
@@ -63,16 +65,16 @@
                                     @foreach($data as $key=> $products)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                          
                                             <td>{{$products->product_name}}</td>
+                                            <td>{{$products->category->category_name}}</td>
+                                            <td>{{$products->section->name}}</td>
                                             <td>{{$products->product_code}}</td>
-                                           
                                             <td>{{$products->product_color}}</td>
                                             <td>{{$products->product_price}}</td>
+                                            <td>{{$products->description}}</td>
                                             <td>{{$products->status}}</td>
                                             <td><a href="editcategories/{{$products->id}}"><button class="btn btn-warning"> Edit</button></a></td>
-                                            <td><a href="javascript:void(0)"class="deleteButton"  record="categories" recordId="{{$products->id}}"><button class="btn btn-danger">Delete</button></a></td>
-                                            
+                                            <td><a href="javascript:void(0)"class="deleteButton"  record="product" recordId="{{$products->id}}"><button class="btn btn-danger">Delete</button></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

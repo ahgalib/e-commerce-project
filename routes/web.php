@@ -50,7 +50,9 @@ Route::prefix('/admin')->group(function(){
        Route::patch('/saveeditcategories/{category}',[categoryCon::class,'saveEditCategoriesPage']); 
        Route::get('/deletecategories/{category}',[categoryCon::class,'deleteCategory']);   
        //Products
-       Route::get('/products',[productCon::class,'showProductPage']); 
+       Route::get('/products',[productCon::class,'showProductPage']);
+       Route::get('/addproducts',[productCon::class,'showAddProductPage']);
+       Route::get('/deleteproduct/{product}',[productCon::class,'deleteProduct']);    
        
     });
 });

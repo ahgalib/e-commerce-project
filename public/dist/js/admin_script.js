@@ -83,7 +83,7 @@ $(document).ready(function(){
                 'Your file has been deleted.',
                 'success'
               )
-              window.location.href = "deletecategories"+"/"+recordId;
+              window.location.href = "delete"+record+"/"+recordId;
             }
            
         })
