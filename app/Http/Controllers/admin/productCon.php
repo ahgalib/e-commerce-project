@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\section;
+use App\Models\category;
 
 class productCon extends Controller
 {
@@ -33,5 +34,119 @@ class productCon extends Controller
         // echo "<pre>";print_r($cata);die;
 
         return view('admin.product.addproduct',compact('fabricArray','sleeverArray','patternArray','fitArray','occassionArray','categories'));
+    }
+
+    public function SaveAddProductsForm(Request $req){
+        $req->validate([
+            'category_id'=>'required',
+            'product_name'=>'required',
+            'product_code'=>'required',
+            'product_color'=>'required',
+            'product_price'=>'required',
+            'description'=>'required',
+            'main_image'=>'required',
+        ]);
+
+        $cateDetails = category::find($req->category_id);
+        $imagePath = request('main_image')->store('product_image','public');
+        if(request('product_video')){
+            $videoPath = request('product_video')->store('product_video','public');
+            $videoArray = ['product_video'=>$videoPath];
+        }
+        if(empty($req['is_featured'])){
+            $is_featured = "NO";
+        }else{
+            $is_featured = "YES";
+        }
+        Product::create([
+            'category_id'=>$req->category_id,
+            'section_id'=>$cateDetails['section_id'],
+            'product_name'=>$req->product_name,
+            'product_code'=>$req->product_code,
+            'product_color'=>$req->product_color,
+            'product_price'=>$req->product_price,
+            'product_discount'=>$req->product_discount,
+            'product_weight'=>$req->product_weight,
+            //'product_video'=>$req->product_video,
+            'main_image'=>$imagePath,
+            'description'=>$req->description,
+            'fabric'=>$req->fabric,
+            'pattern'=>$req->pattern,
+            'sleeve'=>$req->sleeve,
+            'fit'=>$req->fit,
+            'occassion'=>$req->occassion,
+            'meta_title'=>$req->meta_title,
+            'meta_description'=>$req->meta_description,
+            'meta_keywords'=>$req->meta_keywords,
+            'is_featured'=>$is_featured,
+            'status'=>$req->status,
+
+        ],array_merge($videoArray??[]));
+        return redirect('admin/products');
+            
+    }
+
+    public function showEditProductPage($product){
+         //Filter Array
+        $fabricArray = array('Cotton','Polyester','Woll');
+        $sleeverArray = array('Ful Sleeve','Half Sleeve','Short Sleeve','Sleeveless');
+        $patternArray = array('Checked','Plain','Printed','Self','Solid');
+        $fitArray = array('Regular','Silm');
+        $occassionArray = array('Casual','Formal');
+
+        $categories = section::with('categories')->get();
+
+        $data = Product::find($product);
+        return view('admin.product.editproduct',compact('data','fabricArray','sleeverArray','patternArray','fitArray','occassionArray','categories'));
+    }
+
+    public function saveEditProductPage(Request $req,Product $product){
+        $data = $req->validate([
+            'category_id'=>'required',
+            'product_name'=>'required',
+            'product_code'=>'required',
+            'product_color'=>'required',
+            'product_price'=>'required',
+            'product_discount'=>'',
+            'product_weight'=>'',
+            'description'=>'required',
+            'main_image'=>'',
+            'product_video'=>'',
+            'fabric'=>'',
+            'pattern'=>'',
+            'sleeve'=>'',
+            'fit'=>'',           
+            'occassion'=>'',
+            'meta_title'=>'',
+            'meta_description'=>'',
+            'meta_keywords'=>'',
+            'is_featured'=>'',
+            'status'=>'',
+        ]);
+        
+        if(request('main_image')){
+            $imagePath = request('main_image')->store('product_image','public');
+            $imageArray = ['main_image'=>$imagePath];
+        }
+       
+        if(request('product_video')){
+            $videoPath = request('product_video')->store('product_video','public');
+            $videoArray = ['product_video'=>$videoPath];
+        }
+        if(empty($req['is_featured'])){
+            $is_featured = "NO";
+        }else{
+            $is_featured = "YES";
+        }
+        $cateDetails = category::find($req->category_id);
+        $section_id = ['section_id'=>$cateDetails['section_id']];
+        Product::where(['id'=>$product['id']])->update(array_merge(
+            $data,
+            $section_id,
+            $videoArray??[],
+            $imageArray??[],
+        ));
+        return redirect('admin/products');
+
     }
 }

@@ -52,7 +52,11 @@ Route::prefix('/admin')->group(function(){
        //Products
        Route::get('/products',[productCon::class,'showProductPage']);
        Route::get('/addproducts',[productCon::class,'showAddProductPage']);
-       Route::get('/deleteproduct/{product}',[productCon::class,'deleteProduct']);    
+       Route::post('/SaveAddProducts',[productCon::class,'SaveAddProductsForm']);
+       Route::get('/editproduct/{product}',[productCon::class,'showEditProductPage']);
+       Route::post('/saveeditproduct/{product}',[productCon::class,'saveEditProductPage']);
+       Route::get('/deleteproduct/{product}',[productCon::class,'deleteProduct']);   
+        
        
     });
 });

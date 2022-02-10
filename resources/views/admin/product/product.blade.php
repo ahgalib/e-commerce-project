@@ -56,6 +56,7 @@
                                         <th>Product Code</th>
                                         <th>Product Color</th>
                                         <th>Product Price</th>
+                                        <th>Product Image</th>
                                         <th>Description</th>
                                         <th>Status</th>
                                         <th colspan="2">Action</th>
@@ -71,9 +72,10 @@
                                             <td>{{$products->product_code}}</td>
                                             <td>{{$products->product_color}}</td>
                                             <td>{{$products->product_price}}</td>
+                                            <td><img src="/storage/{{$products->main_image}}" alt="" style="width:100px;height:80px;"></td>
                                             <td>{{$products->description}}</td>
                                             <td>{{$products->status}}</td>
-                                            <td><a href="editcategories/{{$products->id}}"><button class="btn btn-warning"> Edit</button></a></td>
+                                            <td><a href="editproduct/{{$products->id}}"><button class="btn btn-warning"> Edit</button></a></td>
                                             <td><a href="javascript:void(0)"class="deleteButton"  record="product" recordId="{{$products->id}}"><button class="btn btn-danger">Delete</button></a></td>
                                         </tr>
                                     @endforeach
