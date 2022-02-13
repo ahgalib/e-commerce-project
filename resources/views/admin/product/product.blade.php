@@ -19,7 +19,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -57,9 +57,10 @@
                                         <th>Product Color</th>
                                         <th>Product Price</th>
                                         <th>Product Image</th>
-                                        <th>Description</th>
-                                        <th>Status</th>
+                                        <th>Product Size</th>
+                                       
                                         <th colspan="2">Action</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,10 +74,11 @@
                                             <td>{{$products->product_color}}</td>
                                             <td>{{$products->product_price}}</td>
                                             <td><img src="/storage/{{$products->main_image}}" alt="" style="width:100px;height:80px;"></td>
-                                            <td>{{$products->description}}</td>
-                                            <td>{{$products->status}}</td>
+                                          
+                                            <td><a href="addProductAttributes/{{$products->id}}">Add product Attributes</a></td>
                                             <td><a href="editproduct/{{$products->id}}"><button class="btn btn-warning"> Edit</button></a></td>
                                             <td><a href="javascript:void(0)"class="deleteButton"  record="product" recordId="{{$products->id}}"><button class="btn btn-danger">Delete</button></a></td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -17,4 +17,8 @@ class Product extends Model
     public function section(){
         return $this->belongsTo(section::class);
     }
+
+    public function ProductAttribute(){
+         return $this->hasMany(ProductAttribute::class);
+     }
 }

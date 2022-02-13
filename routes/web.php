@@ -56,6 +56,7 @@ Route::prefix('/admin')->group(function(){
        Route::get('/editproduct/{product}',[productCon::class,'showEditProductPage']);
        Route::post('/saveeditproduct/{product}',[productCon::class,'saveEditProductPage']);
        Route::get('/deleteproduct/{product}',[productCon::class,'deleteProduct']);   
+       Route::get('/addProductAttributes/{product}',[productCon::class,'showAddProductAttributesPage']);   
         
        
     });

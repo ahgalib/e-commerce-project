@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\section;
 use App\Models\category;
+use App\Models\ProductAttribute;
 
 class productCon extends Controller
 {
     public function showProductPage(){
         $data = Product::all();
+      
         return view('admin.product.product',compact('data'));
     }
 
@@ -148,5 +150,10 @@ class productCon extends Controller
         ));
         return redirect('admin/products');
 
+    }
+
+    public function showAddProductAttributesPage($product){
+        $data = Product::find($product);
+        return view('admin.product.addProductAttribute',compact('data'));
     }
 }
