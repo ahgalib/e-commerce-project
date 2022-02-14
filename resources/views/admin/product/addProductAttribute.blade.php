@@ -40,49 +40,42 @@
                             <div class="col-md-6">
                                
                                 <div class="form-group">
-                                    <label>Product Name</label>
-                                    <input type="text" readOnly class="form-control" name="product_name" id="product_name" value="{{$data->product_name}}">
-                                    <span style="color:red;">@error('product_name'){{$message}}@enderror</span>
+                                    <label>Product Name:</label>
+                               {{$data->product_name}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Product price</label>
-                                    <input type="text" class="form-control" name="product_price" id="product_price" value="{{ old('product_price') }}">
-                                    <span style="color:red;">@error('product_price'){{$message}}@enderror</span>
+                                    <label>Product price:</label>
+                                    {{$data->product_price}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Product size</label>
-                                    <input type="text" class="form-control" name="product_size" id="product_size" value="{{ old('product_size') }}">
-                                    <span style="color:red;">@error('product_size'){{$message}}@enderror</span>
-                                </div>
-                            </div><!-- /.col -->
-                        
-                            <div class="col-md-6">
-                                <!-- /.form-group -->
-                                <div class="form-group">
-                                    <label>Product stock</label>
-                                    <input type="text" class="form-control" name="product_stock" id="product_stock" value="{{ old('product_stock') }}">
-                                    <span style="color:red;">@error('product_stock'){{$message}}@enderror</span>
+                                    <label>Product size:</label>
+                                    {{$data->product_code}}
                                 </div>
                                 
-                                <div class="form-group">
-                                    <label>Product sku</label>
-                                    <input type="text" class="form-control" name="product_sku" id="product_sku" value="{{ old('product_sku') }}">
-                                    <span style="color:red;">@error('product_sku'){{$message}}@enderror</span>
-                                </div>
-                            <div class="col-6 col-sm-6">
-                                <div class="form-group">
-                                    <label for="status"></label>
-                                    <input type="hidden" class="form-control" name="status" id="status" value="1">
-                                    <span style="color:red;">@error('status'){{$message}}@enderror</span>
-                                </div>
                             </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <img src="/storage/{{$data->main_image}}" alt="" style="width:220px;height:180px;">
+                                </div>
+                            </div><!-- /.col -->
+
+                            <div class="field_wrapper" style="margin-top:20px;">
+                                <div>
+                                    <h2>Add Product Attribte</h2>
+                                    <input type="text" name="field_name[]" value="" placeholder="product size"/>
+                                    <input type="text" name="sku[]" value="" placeholder="product sku"/>
+                                    <input type="text" name="price[]" value="" placeholder="product price"/>
+                                    <input type="text" name="stock[]" value="" placeholder="product stock"/>
+                                    <a href="javascript:void(0);" class="add_button" title="Add field">add field</a>
+                                </div>
+                                
+                            </div>
+                          
                             
                             <!-- /.col -->
                         </div> <!-- /.row -->
                     </div><!-- /.card-body -->
-                    <div class="card-footer">
-                        <button class="btn btn-primary" id="sweetAlert">Add Product</button>
-                    </div>
+                   
                 </div><!-- /.card -->
             </form>
         </div><!-- /.container-fluid -->
