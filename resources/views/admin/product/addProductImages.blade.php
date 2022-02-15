@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Product Attribute</h1>
+                    <h1>Add Product Images</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -26,7 +26,7 @@
         <div class="container-fluid">
             <div class="card card-default">
                 <div class="card-header">
-                    <h3 class="card-title">Add Product Attribute</h3>
+                    <h3 class="card-title">Add Product Images</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                         <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
@@ -56,7 +56,7 @@
                                 <img src="/storage/{{$data->main_image}}" alt="" style="width:220px;height:180px;">
                             </div>
                         </div><!-- /.col -->
-                        <form action="/admin/saveProductAttributes/{{$data->id}}" method="post" enctype="multipart/form-data">
+                        <form action="/admin/saveProductimages/{{$data->id}}" method="post" enctype="multipart/form-data">
                         @if(Session::get('error'))
                             <div class="alert alert-danger">
                                 {{Session::get('error')}}
@@ -64,22 +64,20 @@
                         @endif
                             @csrf
                             <div class="field_wrapper" style="margin-top:20px;">
-                                <div>
-                                    <h2>Add Product Attribte</h2>
-                                    <input type="text" name="size[]" value="" required placeholder="product size"/>
-                                    <!-- <span style="color:red;">@error('size[]'){{$message}}@enderror</span> -->
-                                    <input type="text" name="sku[]" value="" required placeholder="product sku"/>
-                                    <span style="color:red;">@error('sku'){{$message}}@enderror</span>
-                                    <input type="number" name="price[]" value="" required placeholder="product price"/>
-                                    <span style="color:red;">@error('price'){{$message}}@enderror</span>
-                                    <input type="number" name="stock[]" value="" required placeholder="product stock"/>
-                                    <span style="color:red;">@error('stock'){{$message}}@enderror</span>
-                                    <input type="hidden" name="status[]" value="1" placeholder="status">
-                                    <a href="javascript:void(0);" class="add_button" title="Add field">add field</a>
+                               
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Product Image</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" multiple="" class="custom-file-input" name="image[]" id="product_video">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                        
+                                    </div>
+                                    <span style="color:red;">@error('product_video'){{$message}}@enderror</span>
                                 </div>
-                                
                             </div>
-                            <button class="btn btn-success mt-3" id="sweetAlert">Add Attribute</button>
+                            <button class="btn btn-success mt-3" id="sweetAlert">Add Product</button>
                         </form>
                         
                         <!-- /.col -->
@@ -94,24 +92,19 @@
                             <h3 class="card-title">Product Attribute For That Product</h3>
                         </div> <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="product" class="table table-bordered table-striped">
+                            <table id="product" class="table table-bordered table-striped text-center">
                                 <thead>
                                     <tr>
-                                        <th>Product Size</th> 
-                                        <th>Category Price</th> 
-                                        <th>Section SKU</th> 
-                                        <th>Product Stock</th>
-                                        <th>Delete</th>
+                                        <th>Product Image</th> 
+                                        <td>Delete</td>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($data['ProductAttribute'] as $products)
+                                    @foreach($data['ProductImage'] as $products)
                                         <tr>
-                                            <td>{{$products->size}}</td>
-                                            <td>{{$products->price}}</td>
-                                            <td>{{$products->sku}}</td>
-                                            <td>{{$products->stock}}</td>
-                                            <td><a href="javascript:void(0)"class="deleteButton"  record="productAttributes" recordId="{{$products->id}}"><button class="btn btn-danger">Delete</button></a></td>
+                                        <td><img src="/storage/{{$products->image}}" alt="" style="width:200px;height:180px;"></td>
+                                        <td><a href="javascript:void(0)"class="deleteButton"  record="productImages" recordId="{{$products->id}}"><button class="btn btn-danger">Delete</button></a></td> 
                                         </tr>
                                     @endforeach
                                 </tbody>

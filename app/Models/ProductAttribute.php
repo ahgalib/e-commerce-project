@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProductAttribute extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['product_id','size','price','sku','stock','status'];
+    
     public function Product(){
         return $this->belongsTo(Product::class);
     }

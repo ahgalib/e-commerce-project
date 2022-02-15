@@ -56,8 +56,12 @@ Route::prefix('/admin')->group(function(){
        Route::get('/editproduct/{product}',[productCon::class,'showEditProductPage']);
        Route::post('/saveeditproduct/{product}',[productCon::class,'saveEditProductPage']);
        Route::get('/deleteproduct/{product}',[productCon::class,'deleteProduct']);   
-       Route::get('/addProductAttributes/{product}',[productCon::class,'showAddProductAttributesPage']);   
-        
+       Route::get('/addProductAttributes/{product}',[productCon::class,'showAddProductAttributesPage']);  
+       Route::post('/saveProductAttributes/{product}',[productCon::class,'saveProductAttributes']); 
+       Route::get('addProductAttributes/deleteproductAttributes/{product}',[productCon::class,'deleteProductAttribute']); 
+       Route::get('/addProductimages/{product}',[productCon::class,'showAddProductImagesPage']);    
+       Route::post('/saveProductimages/{product}',[productCon::class,'saveProductImages']);      
+       Route::get('addProductimages/deleteproductImages/{product}',[productCon::class,'deleteProductImage']); 
        
     });
 });

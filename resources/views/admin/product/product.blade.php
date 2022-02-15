@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Section</h1>
+                    <h1 class="m-0 text-dark">Product</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -42,24 +42,24 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
-                        </div> <!-- /.card-header -->
+                            <h3 class="card-title">All Product Shows Here</h3>
+                        </div> 
                         <div class="card-body">
                             <table id="product" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                         <!-- <th>Parent Id</th> -->
                                         <th>Product Name</th> 
                                         <th>Category Name</th> 
                                         <th>Section Name</th> 
-                                        <th>Product Code</th>
+                                        
                                         <th>Product Color</th>
                                         <th>Product Price</th>
                                         <th>Product Image</th>
-                                        <th>Product Size</th>
-                                       
+                                        <th>Product Attribute</th>
+                                        <th>Add multiImages </th>
                                         <th colspan="2">Action</th>
+                                       
                                        
                                     </tr>
                                 </thead>
@@ -70,14 +70,16 @@
                                             <td>{{$products->product_name}}</td>
                                             <td>{{$products->category->category_name}}</td>
                                             <td>{{$products->section->name}}</td>
-                                            <td>{{$products->product_code}}</td>
+                                           
                                             <td>{{$products->product_color}}</td>
                                             <td>{{$products->product_price}}</td>
                                             <td><img src="/storage/{{$products->main_image}}" alt="" style="width:100px;height:80px;"></td>
                                           
-                                            <td><a href="addProductAttributes/{{$products->id}}">Add product Attributes</a></td>
+                                            <td><a href="addProductAttributes/{{$products->id}}">product Attributes</a></td>
+                                            <td><a href="addProductimages/{{$products->id}}">Product Image</a></td>
                                             <td><a href="editproduct/{{$products->id}}"><button class="btn btn-warning"> Edit</button></a></td>
                                             <td><a href="javascript:void(0)"class="deleteButton"  record="product" recordId="{{$products->id}}"><button class="btn btn-danger">Delete</button></a></td>
+                                            
                                             
                                         </tr>
                                     @endforeach

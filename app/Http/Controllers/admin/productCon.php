@@ -8,12 +8,11 @@ use App\Models\Product;
 use App\Models\section;
 use App\Models\category;
 use App\Models\ProductAttribute;
-
+use App\Models\ProductImage;
 class productCon extends Controller
 {
     public function showProductPage(){
         $data = Product::all();
-      
         return view('admin.product.product',compact('data'));
     }
 
@@ -153,7 +152,61 @@ class productCon extends Controller
     }
 
     public function showAddProductAttributesPage($product){
-        $data = Product::find($product);
+        $data = Product::with('ProductAttribute')->find($product);
         return view('admin.product.addProductAttribute',compact('data'));
     }
+
+    public function saveProductAttributes(Request $req,$product){
+        $data = $req->all();
+        foreach ($data['sku'] as $key => $value) {
+            $sameAttributeSize = ProductAttribute::where(['product_id'=>$product,'size'=>$data['size'][$key]])->count();
+            if($sameAttributeSize>0){
+                $message = 'This size for the product has already exsist.You can not add the size';
+                return back()->with('error',$message);
+            }
+            if(!empty($value)){
+                ProductAttribute::create([
+                    'product_id'=>$product,
+                    'size'=>$data['size'][$key],
+                    'price'=>$data['price'][$key],
+                    'sku'=>$data['sku'][$key],
+                    'stock'=>$data['stock'][$key],
+                    'status'=>$data['status'][$key],
+                ]);
+               
+            }
+        }
+    return back();
+    }
+
+    public function deleteProductAttribute($product){
+        ProductAttribute::find($product)->delete();
+         return back()->with('success','Category Deleted Successfully');
+    }
+
+    public function showAddProductImagesPage($product){
+        $data = Product::with('ProductImage')->find($product);
+        // $projson = json_decode(json_encode($productData),true);
+        // echo "<pre>";print_r($projson);die;
+        return view('admin.product.addProductImages',compact('data'));
+    }
+
+    public function saveProductImages(Request $req,$product){
+        $images = $req->file('image');
+        foreach ($images as $key => $image) {
+            $mainImage = $image->store('product_image','public');
+                ProductImage::create([
+                    'product_id'=>$product,
+                    'image'=>$mainImage,
+                ]);
+            
+        }
+        return back();
+    }
+
+    public function deleteProductImage($product){
+        ProductImage::find($product)->delete();
+         return back()->with('success','Category Deleted Successfully');
+    }
+
 }
