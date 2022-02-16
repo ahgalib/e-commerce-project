@@ -52,7 +52,7 @@
                                         <th>Product Name</th> 
                                         <th>Category Name</th> 
                                         <th>Section Name</th> 
-                                        
+                                        <th>Brand Name</th>
                                         <th>Product Color</th>
                                         <th>Product Price</th>
                                         <th>Product Image</th>
@@ -70,6 +70,8 @@
                                             <td>{{$products->product_name}}</td>
                                             <td>{{$products->category->category_name}}</td>
                                             <td>{{$products->section->name}}</td>
+                                           
+                                            <td>{{$products->Brand->name}}</td>
                                            
                                             <td>{{$products->product_color}}</td>
                                             <td>{{$products->product_price}}</td>

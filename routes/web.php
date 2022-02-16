@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\adminCon;
 use App\Http\Controllers\admin\sectionCon;
 use App\Http\Controllers\admin\categoryCon;
 use App\Http\Controllers\admin\productCon;
+use App\Http\Controllers\admin\brandCon;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,10 @@ Route::prefix('/admin')->group(function(){
        Route::post('/saveProductimages/{product}',[productCon::class,'saveProductImages']);      
        Route::get('addProductimages/deleteproductImages/{product}',[productCon::class,'deleteProductImage']); 
        
+       //Brand Part
+       Route::get('/showbrand',[brandCon::class,'showBrandPage']);
+       Route::get('/addbrand',[brandCon::class,'showAddBrandPage']);
+       Route::post('/saveaBrand',[brandCon::class,'saveBrand']);
     });
 });
  

@@ -9,6 +9,7 @@ use App\Models\section;
 use App\Models\category;
 use App\Models\ProductAttribute;
 use App\Models\ProductImage;
+use App\Models\Brand;
 class productCon extends Controller
 {
     public function showProductPage(){
@@ -31,15 +32,17 @@ class productCon extends Controller
 
         //relation between section,categories and product
         $categories = section::with('categories')->get();
+        $brand = Brand::all();
         // $cata = json_decode(json_encode($cata),true);
         // echo "<pre>";print_r($cata);die;
 
-        return view('admin.product.addproduct',compact('fabricArray','sleeverArray','patternArray','fitArray','occassionArray','categories'));
+        return view('admin.product.addproduct',compact('fabricArray','sleeverArray','patternArray','fitArray','occassionArray','categories','brand'));
     }
 
     public function SaveAddProductsForm(Request $req){
         $req->validate([
             'category_id'=>'required',
+            'brand_id'=>'required',
             'product_name'=>'required',
             'product_code'=>'required',
             'product_color'=>'required',
@@ -61,6 +64,7 @@ class productCon extends Controller
         }
         Product::create([
             'category_id'=>$req->category_id,
+            'brand_id'=>$req->brand_id,
             'section_id'=>$cateDetails['section_id'],
             'product_name'=>$req->product_name,
             'product_code'=>$req->product_code,
@@ -98,13 +102,15 @@ class productCon extends Controller
         $categories = section::with('categories')->get();
 
         $data = Product::find($product);
-        return view('admin.product.editproduct',compact('data','fabricArray','sleeverArray','patternArray','fitArray','occassionArray','categories'));
+        $brand = Brand::all();
+        return view('admin.product.editproduct',compact('data','fabricArray','sleeverArray','patternArray','fitArray','occassionArray','categories','brand'));
     }
 
     public function saveEditProductPage(Request $req,Product $product){
         $data = $req->validate([
             'category_id'=>'required',
             'product_name'=>'required',
+            'brand_id'=>'required',
             'product_code'=>'required',
             'product_color'=>'required',
             'product_price'=>'required',
@@ -195,11 +201,10 @@ class productCon extends Controller
         $images = $req->file('image');
         foreach ($images as $key => $image) {
             $mainImage = $image->store('product_image','public');
-                ProductImage::create([
-                    'product_id'=>$product,
-                    'image'=>$mainImage,
-                ]);
-            
+            ProductImage::create([
+                'product_id'=>$product,
+                'image'=>$mainImage,
+            ]);
         }
         return back();
     }

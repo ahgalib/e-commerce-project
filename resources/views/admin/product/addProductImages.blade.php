@@ -20,9 +20,7 @@
         </div><!-- /.container-fluid -->
     </section>
 
- 
-    
-    <section class="content">
+     <section class="content">
         <div class="container-fluid">
             <div class="card card-default">
                 <div class="card-header">
@@ -36,7 +34,6 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            
                             <div class="form-group">
                                 <label>Product Name:</label>
                             {{$data->product_name}}
@@ -66,7 +63,7 @@
                             <div class="field_wrapper" style="margin-top:20px;">
                                
                                 <div class="form-group">
-                                    <label for="exampleInputFile">Product Image</label>
+                                    <label for="exampleInputFile">Product Image(you can choose multiple images)</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" multiple="" class="custom-file-input" name="image[]" id="product_video">
@@ -77,14 +74,12 @@
                                     <span style="color:red;">@error('product_video'){{$message}}@enderror</span>
                                 </div>
                             </div>
-                            <button class="btn btn-success mt-3" id="sweetAlert">Add Product</button>
+                            <button class="btn btn-success mt-3" id="sweetAlert">ADD Image</button>
                         </form>
-                        
-                        <!-- /.col -->
                     </div> <!-- /.row -->
                 </div><!-- /.card-body -->
-                   
             </div><!-- /.card -->
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -97,7 +92,6 @@
                                     <tr>
                                         <th>Product Image</th> 
                                         <td>Delete</td>
-                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,7 +112,7 @@
 </div> <!-- /.content-wrapper -->
  
 
-  @endsection
+@endsection
 
 
 

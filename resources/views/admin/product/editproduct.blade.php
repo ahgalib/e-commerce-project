@@ -80,6 +80,16 @@
                             <div class="col-md-6">
                                 <!-- /.form-group -->
                                 <div class="form-group">
+                                    <label>Select Brand</label>
+                                    <select name="brand_id" id="brand_id" class="form-control select2" style="width: 100%;">
+                                        <option>Choose One</option>
+                                        @foreach($brand as $bname)
+                                            <option value="{{$bname->id}}" @if($data['brand_id'] == $bname['id']) selected @endif>{{$bname->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span style="color:red;">@error('brand_id'){{$message}}@enderror</span>
+                                </div>
+                                <div class="form-group">
                                     <label>Product Code</label>
                                     <input type="text" class="form-control" name="product_code" id="product_code" value="{{  $data['product_code'] }}">
                                     <span style="color:red;">@error('product_code'){{$message}}@enderror</span>
@@ -90,11 +100,7 @@
                                     <input type="text" class="form-control" name="product_color" id="product_color" value="{{  $data['product_color'] }}">
                                     <span style="color:red;">@error('product_color'){{$message}}@enderror</span>
                                 </div>
-                                <div class="form-group">
-                                    <label>Product weight</label>
-                                    <input type="text" class="form-control" name="product_weight" id="product_weight" value="{{  $data['product_weight'] }}">
-                                    <span style="color:red;">@error('product_weight'){{$message}}@enderror</span>
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="exampleInputFile">Product Image</label>
                                     <div class="input-group">
@@ -114,6 +120,12 @@
                         
                         <div class="row">
                             <div class="col-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Product weight</label>
+                                    <input type="text" class="form-control" name="product_weight" id="product_weight" value="{{  $data['product_weight'] }}">
+                                    <span style="color:red;">@error('product_weight'){{$message}}@enderror</span>
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="exampleInputFile">Product Video</label>
                                     <div class="input-group">

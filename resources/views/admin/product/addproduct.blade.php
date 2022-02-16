@@ -52,8 +52,9 @@
                                         @endforeach
                                     <span style="color:red;">@error('category_id'){{$message}}@enderror</span> 
                                     </select>
-                                   
                                 </div>
+                                
+                           
                            
                                 <div class="form-group">
                                     <label>Product Name</label>
@@ -70,10 +71,33 @@
                                     <input type="text" class="form-control" name="product_discount" id="product_discount" value="{{ old('product_discount') }}">
                                     <span style="color:red;">@error('product_discount'){{$message}}@enderror</span>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Product Video</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="product_video" id="product_video">
+                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="">Upload</span>
+                                        </div>
+                                    </div>
+                                    <span style="color:red;">@error('product_video'){{$message}}@enderror</span>
+                                </div>
                             </div><!-- /.col -->
                         
                             <div class="col-md-6">
                                 <!-- /.form-group -->
+                                <div class="form-group">
+                                    <label>Select Brand</label>
+                                    <select name="brand_id" id="brand_id" class="form-control select2" style="width: 100%;">
+                                        <option>Choose One</option>
+                                        @foreach($brand as $bname)
+                                            <option value="{{$bname['id']}}">{{$bname['name']}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span style="color:red;">@error('brand_id'){{$message}}@enderror</span>
+                                </div>
                                 <div class="form-group">
                                     <label>Product Code</label>
                                     <input type="text" class="form-control" name="product_code" id="product_code" value="{{ old('product_code') }}">
@@ -108,21 +132,7 @@
                         </div><!-- /.row -->
                         
                         <div class="row">
-                            <div class="col-6 col-sm-6">
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Product Video</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="product_video" id="product_video">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="">Upload</span>
-                                        </div>
-                                    </div>
-                                    <span style="color:red;">@error('product_video'){{$message}}@enderror</span>
-                                </div>
-                            </div>
+                            
                             <div class="col-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="category_name">Wash Care</label>
@@ -225,14 +235,13 @@
                                     <input type="hidden" class="form-control" name="status" id="status" value="1">
                                     <span style="color:red;">@error('status'){{$message}}@enderror</span>
                                 </div>
-                            </div>
-                            <div class="col-6 col-sm-6">
                                 <div class="form-group">
                                     <label for="status">Featured</label>
                                     <input type="checkbox"  name="is_featured" id="is_featured" value="YES">
                                     <span style="color:red;">@error('is_featured'){{$message}}@enderror</span>
                                 </div>
                             </div>
+                            
                             <!-- /.col -->
                         </div> <!-- /.row -->
                     </div><!-- /.card-body -->
