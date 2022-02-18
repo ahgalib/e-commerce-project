@@ -237,7 +237,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="status">Featured</label>
-                                    <input type="checkbox"  name="is_featured" id="is_featured" value="YES">
+                                    <input type="checkbox" checked name="is_featured" id="is_featured" value="YES">
                                     <span style="color:red;">@error('is_featured'){{$message}}@enderror</span>
                                 </div>
                             </div>

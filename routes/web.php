@@ -74,5 +74,7 @@ Route::prefix('/admin')->group(function(){
 
 Route::get('/',[indexCon::class,'index']);
 Route::get('/product_details',[indexCon::class,'showProductDetails']);
+Route::get('/compair',[indexCon::class,'showCompairPage']);
+
 
  

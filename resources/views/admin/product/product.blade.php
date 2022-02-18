@@ -50,7 +50,7 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Product Name</th> 
-                                        <th>Category Name</th> 
+                                        <th>Category Name</th>
                                         <th>Section Name</th> 
                                         <th>Brand Name</th>
                                         <th>Product Color</th>

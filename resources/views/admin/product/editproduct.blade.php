@@ -39,7 +39,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="category_name">Select Category</label>
-                                    <select name="category_id" id="category_id" required class="form-control select2" style="width: 100%;">
+                                    <select name="category_id" id="category_id" class="form-control select2" style="width: 100%;">
                                     @if(Session::get('error'))
                                     <div class="alert alert-success">
                                         {{Session::get('error')}}
