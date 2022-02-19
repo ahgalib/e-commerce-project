@@ -11,8 +11,10 @@ class indexCon extends Controller
 {
     public function index(){
         $page_name = "index";
-        $featuredItem = Product::where('is_featured','YES')->count();
-        return view('font_end.index',compact('page_name','featuredItem'));
+        $featuredItemCount = Product::where('is_featured','YES')->count();
+        $featuredItems = Product::where('is_featured','YES')->get()->toArray();
+        $featuredItemsChunk = array_chunk($featuredItems,4);
+        return view('font_end.index',compact('page_name','featuredItemsChunk','featuredItemCount'));
     }
 
     
