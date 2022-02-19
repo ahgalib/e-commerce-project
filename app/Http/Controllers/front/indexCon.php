@@ -14,7 +14,10 @@ class indexCon extends Controller
         $featuredItemCount = Product::where('is_featured','YES')->count();
         $featuredItems = Product::where('is_featured','YES')->get()->toArray();
         $featuredItemsChunk = array_chunk($featuredItems,4);
-        return view('font_end.index',compact('page_name','featuredItemsChunk','featuredItemCount'));
+
+        $leatestProduct = Product::orderBy('id','desc')->limit(6)->get()->toArray();
+       
+        return view('font_end.index',compact('page_name','featuredItemsChunk','featuredItemCount','leatestProduct'));
     }
 
     
