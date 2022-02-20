@@ -21,7 +21,6 @@ class indexCon extends Controller
     }
 
     
-
     public function showProductDetails(){
         return view('font_end/product_details');
     }

@@ -16,5 +16,17 @@ class category extends Model
 
     public function section(){
         return $this->belongsTo(section::class);
-      }
+    }
+
+    public static function categoryDetails($url){
+        $categoryDetails = category::select('id','category_name','url')->with('subcategories')->where('url',$url)->first()->toArray();
+        //dd($cateDetails);die;
+        $catIds = array();
+        $catIds[] = $categoryDetails['id'];
+        foreach ($categoryDetails['subcategories'] as $key => $subCat) {
+            $catIds[] = $subCat['id'];
+        }
+        // dd($catIds);
+       return array('catIds'=>$catIds,'categoryDetails'=>$categoryDetails);
+    }
 }

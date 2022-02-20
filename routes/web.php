@@ -8,6 +8,8 @@ use App\Http\Controllers\admin\categoryCon;
 use App\Http\Controllers\admin\productCon;
 use App\Http\Controllers\admin\brandCon;
 use App\Http\Controllers\front\indexCon;
+use App\Http\Controllers\front\frontProductCon;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -71,10 +73,10 @@ Route::prefix('/admin')->group(function(){
        Route::post('/saveaBrand',[brandCon::class,'saveBrand']);
     });
 });
-
+//FRONT END ROUTE
 Route::get('/',[indexCon::class,'index']);
 Route::get('/product_details',[indexCon::class,'showProductDetails']);
 Route::get('/compair',[indexCon::class,'showCompairPage']);
-
+Route::get('/{url}',[frontProductCon::class,'pageListing']);
 
  
