@@ -19,14 +19,20 @@ class category extends Model
     }
 
     public static function categoryDetails($url){
-        $categoryDetails = category::select('id','category_name','url')->with('subcategories')->where('url',$url)->first()->toArray();
+        $categoryDetails = category::select('id','parent_id','category_name','url','description')->with('subcategories')->where('url',$url)->first()->toArray();
         //dd($cateDetails);die;
+        if($categoryDetails['parent_id'] == 0){
+            $breadcrums = '<a href="'.url($categoryDetails['url']).'">'.$categoryDetails['category_name'].'</a>';
+        }else{
+            $parentCategory = category::where('id',$categoryDetails['parent_id'])->first()->toArray();
+            $breadcrums = '<a href="'.url($parentCategory['url']).'">'.$parentCategory['category_name'].'</a><span class="divider">/</span><a href="'.url($categoryDetails['url']).'">'.$categoryDetails['category_name'].'</a>';
+        }
         $catIds = array();
         $catIds[] = $categoryDetails['id'];
         foreach ($categoryDetails['subcategories'] as $key => $subCat) {
             $catIds[] = $subCat['id'];
         }
         // dd($catIds);
-       return array('catIds'=>$catIds,'categoryDetails'=>$categoryDetails);
+       return array('catIds'=>$catIds,'categoryDetails'=>$categoryDetails,'breadcrums'=>$breadcrums);
     }
 }
