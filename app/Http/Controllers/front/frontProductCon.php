@@ -12,9 +12,31 @@ class frontProductCon extends Controller
     public function pageListing($url){
         $productListing = category::where('url',$url)->count();
         if($productListing>0){
-           $categoryDetails =  category::categoryDetails($url);
-            $cateProduct = Product::whereIn('category_id',$categoryDetails['catIds'])->get();
-           //echo "<pre>";print_r($cateProduct);die();
+            $categoryDetails =  category::categoryDetails($url);
+            $cateProduct = Product::whereIn('category_id',$categoryDetails['catIds']);
+            //echo "<pre>";print_r($cateProduct);die();
+
+            //Sort option
+            if(isset($_GET['sort']) && !empty($_GET['sort'])){
+                if($_GET['sort'] == 'product_latest'){
+                    $cateProduct->orderBy('id','Desc');
+                }
+                if($_GET['sort'] == 'product_a_z'){
+                    $cateProduct->orderBy('product_name','Asc');
+                }
+                if($_GET['sort'] == 'product_z_a'){
+                    $cateProduct->orderBy('product_name','Desc');
+                }
+                if($_GET['sort'] == 'product_price_highest_lowest'){
+                    $cateProduct->orderBy('product_price','Desc');
+                }
+                if($_GET['sort'] == 'product_price_lowest_highest'){
+                    $cateProduct->orderBy('product_price','Asc');
+                }
+            }else{
+                $cateProduct->orderBy('id','Desc');
+            }
+            $cateProduct = $cateProduct->simplePaginate(3);
             return view('font_end.products',compact('cateProduct','categoryDetails'));
           
         }else{

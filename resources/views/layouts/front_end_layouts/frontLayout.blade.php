@@ -85,6 +85,7 @@
 
 <script src="{{url('frontEnd/js/front.js') }}"></script>
 <script src="{{url('frontEnd/js/jquery.lightbox-0.5.js') }}"></script>
-
+<!-- front end js -->
+<script src="{{url('frontEnd/js/front_end.js') }}"></script>
 </body>
 </html>

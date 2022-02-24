@@ -11,14 +11,16 @@
 				Nowadays the lingerie industry is one of the most successful business spheres.We always stay in touch with the latest fashion tendencies - that is why our goods are so popular and we have a great number of faithful customers all over the country.
 			</p>
 			<hr class="soft"/>
-			<form class="form-horizontal span6">
+			<form name="sortProducts" id="sortProducts" class="form-horizontal span6" method="get">
 				<div class="control-group">
 					<label class="control-label alignL">Sort By </label>
-					<select>
-						<option>Priduct name A - Z</option>
-						<option>Priduct name Z - A</option>
-						<option>Priduct Stoke</option>
-						<option>Price Lowest first</option>
+					<select name="sort" id="sort">
+						<option value="">select</option>
+						<option value="product_latest" @if($_GET['sort'] && $_GET['sort']=='product_latest') selected @endif>Latest Product</option>
+						<option value="product_a_z" @if($_GET['sort'] && $_GET['sort']=='product_a_z') selected @endif>Priduct name A - Z</option>
+						<option value="product_z_a" @if($_GET['sort'] && $_GET['sort']=='product_z_a') selected @endif>Priduct name Z - A</option>
+						<option value="product_price_highest_lowest" @if($_GET['sort'] && $_GET['sort']=='product_price_highest_lowest') selected @endif>Highest first</option>
+						<option value="product_price_lowest_highest"@if($_GET['sort'] && $_GET['sort']=='product_price_lowest_highest') selected @endif>Lowest first</option>
 					</select>
 				</div>
 			</form>
@@ -86,15 +88,8 @@
 			</div>
 			<a href="compair.html" class="btn btn-large pull-right">Compair Product</a>
 			<div class="pagination">
-				<ul>
-					<li><a href="#">&lsaquo;</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">...</a></li>
-					<li><a href="#">&rsaquo;</a></li>
-				</ul>
+				{{$cateProduct->appends(['sort'=>'price_lowest'])->links()}}
+				
 			</div>
 			<br class="clr"/>
 		</div>
