@@ -15,7 +15,7 @@ class frontProductCon extends Controller
             $categoryDetails =  category::categoryDetails($url);
             $cateProduct = Product::whereIn('category_id',$categoryDetails['catIds']);
             //echo "<pre>";print_r($cateProduct);die();
-
+            
             //Sort option
             if(isset($_GET['sort']) && !empty($_GET['sort'])){
                 if($_GET['sort'] == 'product_latest'){

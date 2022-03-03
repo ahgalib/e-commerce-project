@@ -16,11 +16,11 @@
 					<label class="control-label alignL">Sort By </label>
 					<select name="sort" id="sort">
 						<option value="">select</option>
-						<option value="product_latest" @if($_GET['sort'] && $_GET['sort']=='product_latest') selected @endif>Latest Product</option>
-						<option value="product_a_z" @if($_GET['sort'] && $_GET['sort']=='product_a_z') selected @endif>Priduct name A - Z</option>
-						<option value="product_z_a" @if($_GET['sort'] && $_GET['sort']=='product_z_a') selected @endif>Priduct name Z - A</option>
-						<option value="product_price_highest_lowest" @if($_GET['sort'] && $_GET['sort']=='product_price_highest_lowest') selected @endif>Highest first</option>
-						<option value="product_price_lowest_highest"@if($_GET['sort'] && $_GET['sort']=='product_price_lowest_highest') selected @endif>Lowest first</option>
+						<option value="product_latest" @if(isset($_GET['sort']) && $_GET['sort']=='product_latest') selected @endif>Latest Product</option>
+						<option value="product_a_z" @if(isset($_GET['sort']) && $_GET['sort']=='product_a_z') selected @endif>Priduct name A - Z</option>
+						<option value="product_z_a" @if(isset($_GET['sort']) && $_GET['sort']=='product_z_a') selected @endif>Priduct name Z - A</option>
+						<option value="product_price_highest_lowest" @if(isset($_GET['sort']) && $_GET['sort']=='product_price_highest_lowest') selected @endif>Highest first</option>
+						<option value="product_price_lowest_highest"@if(isset($_GET['sort']) && $_GET['sort']=='product_price_lowest_highest') selected @endif>Lowest first</option>
 					</select>
 				</div>
 			</form>
@@ -65,6 +65,11 @@
 					
 				</div>
 				<div class="tab-pane  active" id="blockView">
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>2</li>
+					</ul>
 					<ul class="thumbnails">
 						@foreach($cateProduct as $product)
 							<li class="span3">
@@ -80,16 +85,17 @@
 								</div>
 							</li>
 						@endforeach
-						
-						
 					</ul>
 					<hr class="soft"/>
 				</div>
 			</div>
 			<a href="compair.html" class="btn btn-large pull-right">Compair Product</a>
 			<div class="pagination">
-				{{$cateProduct->appends(['sort'=>'price_lowest'])->links()}}
-				
+				@if(isset($_GET['sort']) && !empty($_GET['sort']))
+					{{$cateProduct->appends(['sort'=>$_GET['sort']])->links()}}
+				@else
+					{{$cateProduct->links()}}
+				@endif
 			</div>
 			<br class="clr"/>
 		</div>
