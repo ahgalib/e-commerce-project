@@ -23,12 +23,14 @@ class productCon extends Controller
     }
 
     public function showAddProductPage(){
-        //Filter Array
-        $fabricArray = array('Cotton','Polyester','Woll');
-        $sleeverArray = array('Ful Sleeve','Half Sleeve','Short Sleeve','Sleeveless');
-        $patternArray = array('Checked','Plain','Printed','Self','Solid');
-        $fitArray = array('Regular','Silm');
-        $occassionArray = array('Casual','Formal');
+        //product filters
+        $productFilters = Product::productFilters();
+        //echo "<pre>";print_r($productFilters);die;
+        $fabricArray =   $productFilters['fabricArray'];
+        $sleeverArray =  $productFilters['sleeverArray'];
+        $patternArray =   $productFilters['patternArray'];
+        $fitArray =   $productFilters['fitArray'];
+        $occassionArray =   $productFilters['occassionArray'];
 
         //relation between section,categories and product
         $categories = section::with('categories')->get();
@@ -92,12 +94,13 @@ class productCon extends Controller
     }
 
     public function showEditProductPage($product){
-         //Filter Array
-        $fabricArray = array('Cotton','Polyester','Woll');
-        $sleeverArray = array('Ful Sleeve','Half Sleeve','Short Sleeve','Sleeveless');
-        $patternArray = array('Checked','Plain','Printed','Self','Solid');
-        $fitArray = array('Regular','Silm');
-        $occassionArray = array('Casual','Formal');
+        $productFilters = Product::productFilters();
+        //echo "<pre>";print_r($productFilters);die;
+        $fabricArray =   $productFilters['fabricArray'];
+        $sleeverArray =  $productFilters['sleeverArray'];
+        $patternArray =   $productFilters['patternArray'];
+        $fitArray =   $productFilters['fitArray'];
+        $occassionArray =   $productFilters['occassionArray'];
 
         $categories = section::with('categories')->get();
 

@@ -18,6 +18,39 @@ $sections = section::sections();
 						</li>
 					@endforeach
 				</ul>
+				<br>
+				@if(isset($page_name) && $page_name == "products")
+					<div class="well well-small">
+						<h5>Fabric</h5>
+						@foreach($fabricArray as $fabArray)
+							<input type="checkbox" name="fabric[]" id="{{$fabArray}}" value="{{$fabArray}}">&nbsp;&nbsp;{{$fabArray}}<br>
+						@endforeach
+					</div>
+					<div class="well well-small">
+						<h5>Sleeve</h5>
+						@foreach($sleeverArray as $sleeArray)
+							<input type="checkbox" name="sleeve[]" id="{{$sleeArray}}" value="{{$sleeArray}}">&nbsp;&nbsp;{{$sleeArray}}<br>
+						@endforeach
+					</div>
+					<div class="well well-small">
+						<h5>Pattern</h5>
+						@foreach($patternArray as $patArray)
+							<input type="checkbox" name="pattern[]" id="{{$patArray}}" value="{{$patArray}}">&nbsp;&nbsp;{{$patArray}}<br>
+						@endforeach
+					</div>
+					<div class="well well-small">
+						<h5>Fit</h5>
+						@foreach($fitArray as $fitArray)
+							<input type="checkbox" name="fit[]" id="{{$fitArray}}" value="{{$fitArray}}">&nbsp;&nbsp;{{$fitArray}}<br>
+						@endforeach
+					</div>
+					<div class="well well-small">
+						<h5>Occassion</h5>
+						@foreach($occassionArray as $occArray)
+							<input type="checkbox" name="occassion[]" id="{{$occArray}}" value="{{$occArray}}">&nbsp;&nbsp;{{$occArray}}<br>
+						@endforeach
+					</div>
+				@endif
 				<br/>
 				<div class="thumbnail">
 					<img src="{{ url('frontEnd/images/payment_methods.png') }}" title="Payment Methods" alt="Payments Methods">

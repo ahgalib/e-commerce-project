@@ -29,4 +29,15 @@ class Product extends Model
     public function Brand(){
         return $this->belongsTo(Brand::class);
     }
+
+    public static function productFilters(){
+         //Filter Array
+         $productFilters['fabricArray'] = array('Cotton','Polyester','Woll');
+         $productFilters['sleeverArray']= array('Ful Sleeve','Half Sleeve','Short Sleeve','Sleeveless');
+         $productFilters['patternArray'] = array('Checked','Plain','Printed','Self','Solid');
+         $productFilters['fitArray'] = array('Regular','Silm');
+         $productFilters['occassionArray'] = array('Casual','Formal');
+
+         return $productFilters;
+    }
 }
