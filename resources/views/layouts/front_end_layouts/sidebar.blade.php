@@ -23,31 +23,31 @@ $sections = section::sections();
 					<div class="well well-small">
 						<h5>Fabric</h5>
 						@foreach($fabricArray as $fabArray)
-							<input type="checkbox" name="fabric[]" id="{{$fabArray}}" value="{{$fabArray}}">&nbsp;&nbsp;{{$fabArray}}<br>
+							<input type="checkbox" class="fabric" name="fabric[]" id="{{$fabArray}}" value="{{$fabArray}}">&nbsp;&nbsp;{{$fabArray}}<br>
 						@endforeach
 					</div>
 					<div class="well well-small">
 						<h5>Sleeve</h5>
 						@foreach($sleeverArray as $sleeArray)
-							<input type="checkbox" name="sleeve[]" id="{{$sleeArray}}" value="{{$sleeArray}}">&nbsp;&nbsp;{{$sleeArray}}<br>
+							<input type="checkbox" class="sleeve" name="sleeve[]" id="{{$sleeArray}}" value="{{$sleeArray}}">&nbsp;&nbsp;{{$sleeArray}}<br>
 						@endforeach
 					</div>
 					<div class="well well-small">
 						<h5>Pattern</h5>
 						@foreach($patternArray as $patArray)
-							<input type="checkbox" name="pattern[]" id="{{$patArray}}" value="{{$patArray}}">&nbsp;&nbsp;{{$patArray}}<br>
+							<input type="checkbox" class="pattern" name="pattern[]" id="{{$patArray}}" value="{{$patArray}}">&nbsp;&nbsp;{{$patArray}}<br>
 						@endforeach
 					</div>
 					<div class="well well-small">
 						<h5>Fit</h5>
 						@foreach($fitArray as $fitArray)
-							<input type="checkbox" name="fit[]" id="{{$fitArray}}" value="{{$fitArray}}">&nbsp;&nbsp;{{$fitArray}}<br>
+							<input type="checkbox" class="fit" name="fit[]" id="{{$fitArray}}" value="{{$fitArray}}">&nbsp;&nbsp;{{$fitArray}}<br>
 						@endforeach
 					</div>
 					<div class="well well-small">
 						<h5>Occassion</h5>
 						@foreach($occassionArray as $occArray)
-							<input type="checkbox" name="occassion[]" id="{{$occArray}}" value="{{$occArray}}">&nbsp;&nbsp;{{$occArray}}<br>
+							<input type="checkbox" class="occassion" name="occassion[]" id="{{$occArray}}" value="{{$occArray}}">&nbsp;&nbsp;{{$occArray}}<br>
 						@endforeach
 					</div>
 				@endif
