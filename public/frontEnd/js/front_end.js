@@ -3,13 +3,17 @@ $(document).ready(function(){
     //     this.form.submit();
     // });
     $("#sort").on('change',function(){
-        var fabric = getFilter(this);
+        var fabric = getFilter('fabric');
+        var sleeve = getFilter('sleeve');
+        var pattern = getFilter('pattern');
+        var fit = getFilter('fit');
+        var occassion = getFilter('occassion');
         var sort = $(this).val();
         var url = $("#url").val();
         $.ajax({
             url:url,
             type:'get',
-            data:{fabric:fabric,sort:sort,url:url},
+            data:{fabric:fabric,sleeve:sleeve,sort:sort,pattern:pattern,fit:fit,occassion:occassion,url:url},
             success:function(data){
                 $('.filter_product').html(data);
             }
@@ -18,13 +22,93 @@ $(document).ready(function(){
     });
 
     $(".fabric").on('click',function(){
-        var fabric = getFilter(this);
-        var sort = $("#sort").val();
+        var fabric = getFilter('fabric');
+        var sleeve = getFilter('sleeve');
+        var pattern = getFilter('pattern');
+        var fit = getFilter('fit');
+        var occassion = getFilter('occassion');
+        var sort = $("#sort option:selected").val();
         var url = $("#url").val();
         $.ajax({
             url:url,
             type:'get',
-            data:{fabric:fabric,sort:sort,url:url},
+            data:{fabric:fabric,sleeve:sleeve,sort:sort,pattern:pattern,fit:fit,occassion:occassion,url:url},
+            success:function(data){
+                $('.filter_product').html(data);
+            }
+
+        })
+    })
+
+    $(".sleeve").on('click',function(){
+        var fabric = getFilter('fabric');
+        var sleeve = getFilter('sleeve');
+        var pattern = getFilter('pattern');
+        var fit = getFilter('fit');
+        var occassion = getFilter('occassion');
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $.ajax({
+            url:url,
+            type:'get',
+            data:{fabric:fabric,sleeve:sleeve,sort:sort,pattern:pattern,fit:fit,occassion:occassion,url:url},
+            success:function(data){
+                $('.filter_product').html(data);
+            }
+
+        })
+    })
+
+    $(".pattern").on('click',function(){
+        var fabric = getFilter('fabric');
+        var sleeve = getFilter('sleeve');
+        var pattern = getFilter('pattern');
+        var fit = getFilter('fit');
+        var occassion = getFilter('occassion');
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $.ajax({
+            url:url,
+            type:'get',
+            data:{fabric:fabric,sleeve:sleeve,sort:sort,pattern:pattern,fit:fit,occassion:occassion,url:url},
+            success:function(data){
+                $('.filter_product').html(data);
+            }
+
+        })
+    })
+
+    $(".fit").on('click',function(){
+        var fabric = getFilter('fabric');
+        var sleeve = getFilter('sleeve');
+        var pattern = getFilter('pattern');
+        var fit = getFilter('fit');
+        var occassion = getFilter('occassion');
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $.ajax({
+            url:url,
+            type:'get',
+            data:{fabric:fabric,sleeve:sleeve,sort:sort,pattern:pattern,fit:fit,occassion:occassion,url:url},
+            success:function(data){
+                $('.filter_product').html(data);
+            }
+
+        })
+    })
+
+    $(".occassion").on('click',function(){
+        var fabric = getFilter('fabric');
+        var sleeve = getFilter('sleeve');
+        var pattern = getFilter('pattern');
+        var fit = getFilter('fit');
+        var occassion = getFilter('occassion');
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $.ajax({
+            url:url,
+            type:'get',
+            data:{fabric:fabric,sleeve:sleeve,sort:sort,pattern:pattern,fit:fit,occassion:occassion,url:url},
             success:function(data){
                 $('.filter_product').html(data);
             }

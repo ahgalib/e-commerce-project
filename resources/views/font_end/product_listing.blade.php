@@ -12,6 +12,10 @@
 							</p>
 							<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">Tk.{{$product->product_price}}</a></h4>
 							<h5>{{$product->fabric}}</h5>
+							<h5>{{$product->sleeve}}</h5>
+							<h5>{{$product->pattern}}</h5>
+							<h5>{{$product->fit}}</h5>
+							<h5>{{$product->occassion}}</h5>
 						</div>
 					</div>
 				</li>
