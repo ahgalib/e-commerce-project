@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\front;
-
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\category;
@@ -9,7 +9,7 @@ use App\Models\Product;
 
 class frontProductCon extends Controller
 {
-    public function pageListing($url,Request $request){
+    public function pageListing(Request $request){
         if($request->ajax()){
             $data = $request->all();
             $url = $data['url'];
@@ -72,7 +72,7 @@ class frontProductCon extends Controller
             abort(404);
             }
         }else{
-        
+            $url = Route::getFacadeRoot()->current()->uri();
             $productListing = category::where('url',$url)->count();
             if($productListing>0){
                 $categoryDetails =  category::categoryDetails($url);
