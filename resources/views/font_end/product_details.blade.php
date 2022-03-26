@@ -8,20 +8,20 @@
 			</ul>
 			<div class="row">
 				<div id="gallery" class="span3">
-					<a href="{{url('frontEnd/images/products/large/f1.jpg')}}" title="Blue Casual T-Shirt">
-						<img src="{{url('frontEnd/images/products/large/3.jpg') }}" style="width:100%" alt="Blue Casual T-Shirt"/>
+					<a href="/storage/{{$product['main_image'] }}" title="Blue Casual T-Shirt">
+						<img src="/storage/{{$product['main_image'] }}" style="width:100%" alt="Blue Casual T-Shirt"/>
 					</a>
 					<div id="differentview" class="moreOptopm carousel slide">
 						<div class="carousel-inner">
 							<div class="item active">
-								<a href="{{url('frontEnd/images/products/large/f1.jpg')}}"> <img style="width:29%" src="{{url('frontEnd/images/products/large/f1.jpg')}}" alt=""/></a>
-								<a href="{{url('frontEnd/images/products/large/f2.jpg')}}"> <img style="width:29%" src="{{url('frontEnd/images/products/large/f2.jpg')}}" alt=""/></a>
-								<a href="{{url('frontEnd/images/products/large/f3.jpg')}}" > <img style="width:29%" src="{{url('frontEnd/images/products/large/f3.jpg')}}" alt=""/></a>
+								@foreach($product['ProductImage'] as $product_images)
+									<a href="/storage/{{$product_images['image']}}"> <img style="width:29%" src="/storage/{{$product_images['image']}}" alt=""/></a>
+								@endforeach
 							</div>
 							<div class="item">
-								<a href="{{url('frontEnd/images/products/large/f3.jpg')}}" > <img style="width:29%" src="{{url('frontEnd/images/products/large/f3.jpg')}}" alt=""/></a>
-								<a href="{{url('frontEnd/images/products/large/f1.jpg')}}"> <img style="width:29%" src="{{url('frontEnd/images/products/large/f1.jpg')}}" alt=""/></a>
-								<a href="{{url('frontEnd/images/products/large/f2.jpg')}}"> <img style="width:29%" src="{{url('frontEnd/images/products/large/f2.jpg')}}" alt=""/></a>
+								@foreach($product['ProductImage'] as $product_images)
+									<a href="/storage/{{$product_images['image']}}" > <img style="width:29%" src="/storage/{{$product_images['image']}}" alt=""/></a>
+								@endforeach
 							</div>
 						</div>
 						<!--
@@ -42,17 +42,18 @@
 					</div>
 				</div>
 				<div class="span6">
-					<h3>Blue Casual Polo T-Shirt  </h3>
-					<small>- Brand Name</small>
+					<h3>{{$product['product_name']}}</h3>
+					<small>{{$product['Brand']['name']}}</small>
 					<hr class="soft"/>
-					<small>100 items in stock</small>
+					<small> {{$total_stock}} item in stock</small>
 					<form class="form-horizontal qtyFrm">
 						<div class="control-group">
-							<h4>Rs.1000</h4>
+							<h4>{{$product['product_price']}}</h4>
 								<select class="span2 pull-left">
-									<option>Small</option>
-									<option>Medium</option>
-									<option>Large</option>
+									<option>select size</option>
+									@foreach($product['ProductAttribute'] as $attribute)
+										<option>{{$attribute['size']}}</option>
+									@endforeach
 								</select>
 								<input type="number" class="span1" placeholder="Qty."/>
 								<button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
@@ -82,11 +83,11 @@
 							<table class="table table-bordered">
 								<tbody>
 									<tr class="techSpecRow"><th colspan="2">Product Details</th></tr>
-									<tr class="techSpecRow"><td class="techSpecTD1">Brand: </td><td class="techSpecTD2">Gap Premium</td></tr>
-									<tr class="techSpecRow"><td class="techSpecTD1">Code:</td><td class="techSpecTD2">BCT001</td></tr>
-									<tr class="techSpecRow"><td class="techSpecTD1">Color:</td><td class="techSpecTD2">Blue</td></tr>
-									<tr class="techSpecRow"><td class="techSpecTD1">Fabric:</td><td class="techSpecTD2">Cotton</td></tr>
-									<tr class="techSpecRow"><td class="techSpecTD1">Pattern:</td><td class="techSpecTD2">Plain</td></tr>
+									<tr class="techSpecRow"><td class="techSpecTD1">Brand: </td><td class="techSpecTD2">{{$product['Brand']['name']}}</td></tr>
+									<tr class="techSpecRow"><td class="techSpecTD1">Code:</td><td class="techSpecTD2">{{$product['product_code']}}</td></tr>
+									<tr class="techSpecRow"><td class="techSpecTD1">Color:</td><td class="techSpecTD2">{{$product['product_color']}}</td></tr>
+									<tr class="techSpecRow"><td class="techSpecTD1">Fabric:</td><td class="techSpecTD2">{{$product['fabric']}}</td></tr>
+									<tr class="techSpecRow"><td class="techSpecTD1">Pattern:</td><td class="techSpecTD2">{{$product['pattern']}}</td></tr>
 								</tbody>
 							</table>
 							

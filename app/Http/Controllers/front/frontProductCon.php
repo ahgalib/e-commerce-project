@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Pagination\Paginator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\category;
@@ -10,6 +11,7 @@ use App\Models\Product;
 class frontProductCon extends Controller
 {
     public function pageListing(Request $request){
+        Paginator::useBootstrap();
         if($request->ajax()){
             $data = $request->all();
             $url = $data['url'];
@@ -65,7 +67,7 @@ class frontProductCon extends Controller
                 }else{
                     $cateProduct->orderBy('id','Desc');
                 }
-                $cateProduct = $cateProduct->simplePaginate(10);
+                $cateProduct = $cateProduct->Paginate(3);
                 return view('font_end.product_listing',compact('cateProduct','categoryDetails','url'));
             
             }else{
@@ -78,7 +80,7 @@ class frontProductCon extends Controller
                 $categoryDetails =  category::categoryDetails($url);
                 $cateProduct = Product::with('Brand')->whereIn('category_id',$categoryDetails['catIds']);
                 //echo "<pre>";print_r($cateProduct);die();
-                $cateProduct = $cateProduct->simplePaginate(10);
+                $cateProduct = $cateProduct->Paginate(3);
                 //product filters
                 $productFilters = Product::productFilters();
                 //echo "<pre>";print_r($productFilters);die;

@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\productCon;
 use App\Http\Controllers\admin\brandCon;
 use App\Http\Controllers\front\indexCon;
 use App\Http\Controllers\front\frontProductCon;
+use App\Http\Controllers\front\productDetailsCon;
 use App\Models\category;
 
 
@@ -82,11 +83,9 @@ Route::get('/compair',[indexCon::class,'showCompairPage']);
 $catUrls = category::select('url')->get()->pluck('url')->toArray();
 foreach($catUrls as $url){
     Route::get('/'.$url,[frontProductCon::class,'pageListing']);
-}
+};
 
-Route::get('/contact',function(){
-    echo "test";
-});
+Route::get('/product_details/{id}',[productDetailsCon::class,'index']);
 
 
  
