@@ -15,4 +15,14 @@ class productDetailsCon extends Controller
         $total_stock = ProductAttribute::where('product_id',$id)->sum('stock');
         return view('font_end.product_details',compact('product','total_stock'));
     }
+
+    public function ajaxProduct(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            //echo "<pre>";print_r($data);die;
+            $getProductPrice = ProductAttribute::where(['product_id'=>$data['product_id'],'size'=>$data['size']])->first();
+            return $getProductPrice->price;
+
+        }
+    }
 }

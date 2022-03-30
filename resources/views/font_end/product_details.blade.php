@@ -48,8 +48,8 @@
 					<small> {{$total_stock}} item in stock</small>
 					<form class="form-horizontal qtyFrm">
 						<div class="control-group">
-							<h4>{{$product['product_price']}}</h4>
-								<select class="span2 pull-left">
+							<h4 class="getAttrPrice">{{$product['product_price']}}</h4>
+								<select class="span2 pull-left showProductSize" product-id="{{$product['id']}}">
 									<option>select size</option>
 									@foreach($product['ProductAttribute'] as $attribute)
 										<option>{{$attribute['size']}}</option>

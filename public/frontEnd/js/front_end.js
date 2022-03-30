@@ -124,5 +124,20 @@ $(document).ready(function(){
         return filter;
     } 
 
+    $(".showProductSize").on('change',function(){
+        var size = $(this).val();
+        var product_id = $(this).attr("product-id");
+        $.ajax({
+            url:'/ajaxProductDetails',
+            type:'get',
+            data:{size:size,product_id:product_id},
+            success:function(resp){
+                $(".getAttrPrice").html("TK "+ resp)
+            },error:function(){
+                alert("there are some issue");
+            }
+        });
+    })
+
 })
 
