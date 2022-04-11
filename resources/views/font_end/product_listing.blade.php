@@ -4,7 +4,7 @@
 			@foreach($cateProduct as $product)
 				<li class="span3">
 					<div class="thumbnail">
-						<a href="/product_details"><img src="storage/{{$product->main_image}}" style="width:300px;height:250px;" alt=""/></a>
+						<a href="/product_details/{{$product->id}}"><img src="storage/{{$product->main_image}}" style="width:300px;height:250px;" alt=""/></a>
 						<div class="caption">
 							<h5>{{$product->product_name}}</h5>
 							<p>

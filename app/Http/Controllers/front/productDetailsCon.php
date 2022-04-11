@@ -10,10 +10,12 @@ use App\Models\ProductAttribute;
 class productDetailsCon extends Controller
 {
     public function index($id){
-        $product = Product::with('Brand','ProductAttribute','ProductImage')->find($id);
-        // dd($product);
+        $product = Product::with('Brand','ProductAttribute','ProductImage','category')->find($id);
+      
         $total_stock = ProductAttribute::where('product_id',$id)->sum('stock');
-        return view('font_end.product_details',compact('product','total_stock'));
+        $relatedProduct = Product::where('category_id',$product['category']['id'])->where('id','!=',$id)->limit(5)->inRandomOrder()->get()->toArray();
+         //dd($relatedProduct);
+        return view('font_end.product_details',compact('product','total_stock','relatedProduct'));
     }
 
     public function ajaxProduct(Request $request){
