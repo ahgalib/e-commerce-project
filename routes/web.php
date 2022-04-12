@@ -87,6 +87,8 @@ foreach($catUrls as $url){
 
 Route::get('/product_details/{id}',[productDetailsCon::class,'index']);
 Route::get('/ajaxProductDetails',[productDetailsCon::class,'ajaxProduct']);
+// CART ROUTE
+Route::post('add-to-cart',[frontProductCon::class,'addcart']);
 
 
  

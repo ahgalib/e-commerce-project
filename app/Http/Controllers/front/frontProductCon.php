@@ -97,4 +97,9 @@ class frontProductCon extends Controller
             }
         }
     }
+
+    public function addcart(Request $req){
+        return  $req->all();
+    }
+
 }
