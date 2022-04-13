@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\Product;
-
+use App\Models\ProductAttribute;
+use App\Models\Cart;
+use Session;
+use Auth;
 class frontProductCon extends Controller
 {
     public function pageListing(Request $request){
@@ -98,8 +101,43 @@ class frontProductCon extends Controller
         }
     }
 
-    public function addcart(Request $req){
-        return  $req->all();
+    public function addcart(Request $request){
+        $data = $request->all();
+        $getProductStock = ProductAttribute::where(['product_id'=>$data['product_id'],'size'=>$data['size']])->first()->toArray();
+        //echo $getProductStock['stock'];die;
+        if($getProductStock['stock'] < $data['quantity']){
+            return back()->with('success','the stock of this product is short');
+        }
+        
+        $session_id = Session::get('session_id');
+        if(empty($session_id)){
+            $session_id = Session::getId();
+            Session::put('session_id',$session_id);
+        }
+
+        //check login option (user id or session_id)
+        if(Auth::check()){
+            $checkCartProduct = Cart::where(['product_id'=>$data['product_id'],'size'=>$data['size'],'user_id'=>Auth::user()->id])->count();
+        }else{
+            $checkCartProduct = Cart::where(['product_id'=>$data['product_id'],'size'=>$data['size'],'session_id'=>Session::get('session_id')])->count();
+        }
+
+        //check product in the cart that is it already been added or not
+        $checkCartProduct = Cart::where(['product_id'=>$data['product_id'],'size'=>$data['size']])->count();
+        if($checkCartProduct>0){
+            return back()->with('dangerMessage','This product is alerady exist in the cart');
+        }
+        Cart::create([
+            'session_id'=>$session_id,
+            'product_id'=>$data['product_id'],
+            'size'=>$data['size'],
+            'qunatity'=>$data['quantity'],
+        ]);
+        return redirect()->back();
+    }
+
+    public function showCartPage(){
+        return view('font_end.cart');
     }
 
 }

@@ -10,7 +10,7 @@ use App\Models\ProductAttribute;
 class productDetailsCon extends Controller
 {
     public function index($id){
-        $product = Product::with('Brand','ProductAttribute','ProductImage','category')->find($id);
+        $product = Product::with(['Brand','ProductAttribute'=>function($query){$query->where('status',1);},'ProductImage','category'])->find($id);
       
         $total_stock = ProductAttribute::where('product_id',$id)->sum('stock');
         $relatedProduct = Product::where('category_id',$product['category']['id'])->where('id','!=',$id)->limit(5)->inRandomOrder()->get()->toArray();
@@ -24,7 +24,7 @@ class productDetailsCon extends Controller
             //echo "<pre>";print_r($data);die;
             $getProductPrice = ProductAttribute::where(['product_id'=>$data['product_id'],'size'=>$data['size']])->first();
             return $getProductPrice->price;
-
+            
         }
     }
 }

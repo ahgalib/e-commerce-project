@@ -42,13 +42,23 @@
 					</div>
 				</div>
 				<div class="span6">
+					@if(Session::get('success'))
+						<div class="alert alert-danger">
+							{{Session::get('success')}}
+						</div>
+					@endif
+					@if(Session::get('dangerMessage'))
+ 						<div class="alert alert-danger">
+							 {{Session::get('dangerMessage')}}
+						 </div>
+					@endif
 					<h3>{{$product['product_name']}}</h3>
 					<small>{{$product['Brand']['name']}}</small>
 					<hr class="soft"/>
 					<small> {{$total_stock}} item in stock</small>
 					<form action="{{url('add-to-cart')}}" method="post" class="form-horizontal qtyFrm">
 						@csrf
-						<input type="hidden" name="product-id" value="{{$product['id']}}">
+						<input type="hidden" name="product_id" value="{{$product['id']}}">
 						<div class="control-group">
 							<h4 class="getAttrPrice">{{$product['product_price']}}</h4>
  								<!-- <p style="color:red;">please select a size</p> -->
