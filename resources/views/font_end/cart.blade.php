@@ -52,39 +52,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td> <img width="60" src="{{url('themes/images/products/4.jpg')}}" alt=""/></td>
-            <td>Casual T-Shirt<br/>Color : Black</td>
-            <td>
-            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
-            </td>
-            <td>Rs.1000.00</td>
-            <td>Rs.0.00</td>
-            <td>Rs.0.00</td>
-            <td>Rs.1000.00</td>
-        </tr>
-        <tr>
-            <td> <img width="60" src="{{url('themes/images/products/8.jpg')}}" alt=""/></td>
-            <td>Casual T-Shirt<br/>Color : Black</td>
-            <td>
-            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
-            </td>
-            <td>Rs.1000.00</td>
-            <td>Rs.0.00</td>
-            <td>Rs.0.00</td>
-            <td>Rs.1000.00</td>
-        </tr>
-        <tr>
-            <td> <img width="60" src="{{url('themes/images/products/3.jpg')}}" alt=""/></td>
-            <td>Casual T-Shirt<br/>Color : Blue</td>
-            <td>
-            <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1"  size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
-            </td>
-            <td>Rs.1000.00</td>
-            <td>Rs.0.00</td>
-            <td>Rs.0.00</td>
-            <td>Rs.1000.00</td>
-        </tr>
+        @foreach($cartItems as $cartInfo)
+          <tr>
+              <td> <img width="60" src="storage/{{$cartInfo['product']['main_image']}}" alt=""/></td>
+              <td>{{$cartInfo['product']['description']}}<br/>Color : {{$cartInfo['product']['product_color']}}</td>
+              <td>
+              <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="{{$cartInfo['qunatity']}}"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
+              </td>
+              <td>{{$cartInfo['product']['product_price']}}</td>
+              <td>Rs.0.00</td>
+              <td>Rs.0.00</td>
+              <td>Rs.1000.00</td>
+          </tr>
+        @endforeach
         
         <tr>
             <td colspan="6" style="text-align:right">Total Price:	</td>

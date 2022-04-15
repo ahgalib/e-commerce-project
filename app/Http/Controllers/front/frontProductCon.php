@@ -133,11 +133,13 @@ class frontProductCon extends Controller
             'size'=>$data['size'],
             'qunatity'=>$data['quantity'],
         ]);
-        return redirect()->back();
+        return redirect('cart');
     }
 
     public function showCartPage(){
-        return view('font_end.cart');
+        $cartItems = Cart::userCartItems();
+        //echo "<pre>";print_r($cartItems);die;
+        return view('font_end.cart',compact('cartItems'));
     }
 
 }
