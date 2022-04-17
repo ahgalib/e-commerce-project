@@ -47,7 +47,7 @@
             <th>Quantity/Update</th>
             <th>Price</th>
             <th>Discount</th>
-            <th>Tax</th>
+           
             <th>Total</th>
         </tr>
         </thead>
@@ -61,7 +61,7 @@
               </td>
               <td>{{$cartInfo['product']['product_price']}}</td>
               <td>Rs.0.00</td>
-              <td>Rs.0.00</td>
+             
               <td>Rs.1000.00</td>
           </tr>
         @endforeach
