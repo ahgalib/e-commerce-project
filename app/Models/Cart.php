@@ -24,4 +24,9 @@ class Cart extends Model
         }
         return $userCartItems;
     }
+
+    public static function ArrtibuteProductPrice($product_id,$size){
+        $attrProPrice = ProductAttribute::select('price')->where(['product_id'=>$product_id,'size'=>$size])->first();
+        return $attrProPrice['price'];
+    }
 }

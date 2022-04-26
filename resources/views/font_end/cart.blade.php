@@ -1,3 +1,4 @@
+<?php use App\Models\Cart; ?>
 @extends('layouts.front_end_layouts.frontLayout') 
 @section('content') 
 <div class="span9">
@@ -45,30 +46,35 @@
             <th>Product</th>
             <th>Description</th>
             <th>Quantity/Update</th>
-            <th>Price</th>
+            <th>Unit Price</th>
             <th>Discount</th>
            
-            <th>Total</th>
+            <th>sub Total</th>
         </tr>
         </thead>
         <tbody>
+			<?php $total_price = 0; ?>
         @foreach($cartItems as $cartInfo)
+		<?php $attrProPrice = Cart::ArrtibuteProductPrice($cartInfo['product_id'],$cartInfo['size']);  ?>
           <tr>
               <td> <img width="60" src="storage/{{$cartInfo['product']['main_image']}}" alt=""/></td>
               <td>{{$cartInfo['product']['description']}}<br/>Color : {{$cartInfo['product']['product_color']}}</td>
               <td>
               <div class="input-append"><input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="{{$cartInfo['qunatity']}}"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				</div>
               </td>
-              <td>{{$cartInfo['product']['product_price']}}</td>
+              <td>{{$attrProPrice}}</td>
               <td>Rs.0.00</td>
              
-              <td>Rs.1000.00</td>
+              <td> {{$attrProPrice * $cartInfo['qunatity'] }}
+			  
+			  </td>
           </tr>
+		  <?php $total_price = $total_price + ($attrProPrice * $cartInfo['qunatity']);?>
         @endforeach
         
         <tr>
             <td colspan="6" style="text-align:right">Total Price:	</td>
-            <td> Rs.3000.00</td>
+            <td>Tk {{ $total_price}}</td>
         </tr>
             <tr>
             <td colspan="6" style="text-align:right">Total Discount:	</td>
