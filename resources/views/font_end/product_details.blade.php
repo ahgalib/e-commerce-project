@@ -1,3 +1,4 @@
+<?php use App\Models\Product ; ?>
  @extends('layouts.front_end_layouts.frontLayout') 
   @section('content') 
 		<div class="span9">
@@ -60,7 +61,9 @@
 						@csrf
 						<input type="hidden" name="product_id" value="{{$product['id']}}">
 						<div class="control-group">
-							<h4 class="getAttrPrice">{{$product['product_price']}}</h4>
+						<?php $discountedPrice = Product::getProductDiscount($product->id); ?>
+							<h4 class="getAttrPrice"><del><span style="color:red;font-wight:bold;text-align:center;">{{$product['product_price']}}</span></del> <span style="color:green;font-wight:bold;text-align:center;">Only {{$discountedPrice}}!!</span></h4>
+							
  								<!-- <p style="color:red;">please select a size</p> -->
 								<select name="size" id="getPrice"class="span2 pull-left showProductSize" product-id="{{$product['id']}}" required="">
                                   		<option value="">select size</option>
@@ -71,6 +74,7 @@
 								<input name="quantity" type="number" class="span1" placeholder="Qty." required/>
 								<button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
 							</div>
+							
 						</div>
 					</form>
 				

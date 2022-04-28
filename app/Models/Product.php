@@ -40,4 +40,19 @@ class Product extends Model
 
          return $productFilters;
     }
+
+    public static function getProductDiscount($product_id){
+        $productDiscount = Product::select('id','product_price','product_discount','category_id')->where('id',$product_id)->first()->toArray();
+        $categoryDiscount = category::select('id','category_discount')->where('id',$productDiscount['category_id'])->first()->toArray();
+        //return $productDiscount;
+       // echo "<pre>";print_r($productDiscount);die;
+       if($productDiscount['product_discount'] > 0){
+            $discountedPrice =  $productDiscount['product_price'] - ($productDiscount['product_price'] * $productDiscount['product_discount']/100);
+       }else if( $categoryDiscount['category_discount'] > 0){
+            $discountedPrice =  $productDiscount['product_price'] - ($productDiscount['product_price'] * $categoryDiscount['category_discount']/100);
+       }else{
+           $discountedPrice = 0;
+       }
+       return $discountedPrice;
+    }
 }

@@ -80,13 +80,15 @@ Route::get('/',[indexCon::class,'index']);
 Route::get('/product_details',[indexCon::class,'showProductDetails']);
 Route::get('/compair',[indexCon::class,'showCompairPage']);
 
+
+Route::get('product_details/{id}',[productDetailsCon::class,'index']);
+Route::get('/ajaxProductDetails',[productDetailsCon::class,'ajaxProduct']);
+
 $catUrls = category::select('url')->get()->pluck('url')->toArray();
 foreach($catUrls as $url){
     Route::get('/'.$url,[frontProductCon::class,'pageListing']);
 };
 
-Route::get('/product_details/{id}',[productDetailsCon::class,'index']);
-Route::get('/ajaxProductDetails',[productDetailsCon::class,'ajaxProduct']);
 // CART ROUTE
 Route::post('add-to-cart',[frontProductCon::class,'addcart']);
 Route::get('/cart',[frontProductCon::class,'showCartPage']);
