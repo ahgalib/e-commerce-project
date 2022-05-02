@@ -1,3 +1,4 @@
+<?php use App\Models\Product ; ?>
 @extends('layouts.front_end_layouts.frontLayout') 
 @section('content') 
 
@@ -16,8 +17,19 @@
 										<i class="tag"></i>
 										<a href="/product_details/{{$featuredImage['id']}}"><img src="/storage/{{$featuredImage['main_image']}}" alt=""></a>
 										<div class="caption">
+										
 											<h5>{{$featuredImage['product_name']}}</h5>
-											<h4><a class="btn" href="/product_details/{{$featuredImage['id']}}">VIEW</a> <span class="pull-right"> TK. {{$featuredImage['product_price']}}</span></h4>
+											<h4><a class="btn" href="/product_details/{{$featuredImage['id']}}">VIEW</a> 
+											<?php $discountedPrice = Product::getProductDiscount($featuredImage['id']); ?>
+											@if($discountedPrice >0)
+								<del>Tk.{{$featuredImage['product_price']}}</del><span>Only {{$discountedPrice}} TK</span>
+							@else
+								{{$featuredImage['product_price']}}
+							@endif
+							</a>
+							</h4>
+						
+											</h4>
 										</div>
 									</div>
 								</li>
