@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\brandCon;
 use App\Http\Controllers\front\indexCon;
 use App\Http\Controllers\front\frontProductCon;
 use App\Http\Controllers\front\productDetailsCon;
+use App\Http\Controllers\front\LoginRegisterCon;
 use App\Models\category;
 
 
@@ -76,6 +77,12 @@ Route::prefix('/admin')->group(function(){
     });
 });
 //FRONT END ROUTE
+
+$catUrls = category::select('url')->get()->pluck('url')->toArray();
+foreach($catUrls as $url){
+    Route::get('/'.$url,[frontProductCon::class,'pageListing']);
+};
+
 Route::get('/',[indexCon::class,'index']);
 Route::get('/product_details',[indexCon::class,'showProductDetails']);
 Route::get('/compair',[indexCon::class,'showCompairPage']);
@@ -84,13 +91,13 @@ Route::get('/compair',[indexCon::class,'showCompairPage']);
 Route::get('product_details/{id}',[productDetailsCon::class,'index']);
 Route::get('/ajaxProductDetails',[productDetailsCon::class,'ajaxProduct']);
 
-$catUrls = category::select('url')->get()->pluck('url')->toArray();
-foreach($catUrls as $url){
-    Route::get('/'.$url,[frontProductCon::class,'pageListing']);
-};
 
 // CART ROUTE
 Route::post('add-to-cart',[frontProductCon::class,'addcart']);
 Route::get('/cart',[frontProductCon::class,'showCartPage']);
 
- 
+//Login Regester
+Route::get('login',[LoginRegisterCon::class,'loginPage']);
+Route::post('/userRegister',[LoginRegisterCon::class,'userRegister']);
+Route::post('/userLogin',[LoginRegisterCon::class,'userLogin']);
+Route::get('logout',[LoginRegisterCon::class,'userLogout']);

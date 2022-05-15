@@ -48,11 +48,19 @@ $sections = section::sections();
 		          <form class="navbar-search pull-left" action="#">
 		            <input type="text" class="search-query span2" placeholder="Search"/>
 		          </form>
-		          <ul class="nav pull-right">
-		            <li><a href="#">Contact</a></li>
+				  <ul class="nav pull-right">
+				  @if(Auth::check())
+		         
+		            <li><a href="#">Account</a></li>
 		            <li class="divider-vertical"></li>
-		            <li><a href="#">Login</a></li>
-		          </ul>
+		            <li><a href="/logout">logout</a></li>
+		         
+				  @else
+				  <li><a href="#">Regester</a></li>
+		            <li class="divider-vertical"></li>
+		            <li><a href="/login">login</a></li>
+		         @endif
+				  </ul>
 		        </div><!-- /.nav-collapse -->
 		      </div>
 		    </div><!-- /navbar-inner -->
