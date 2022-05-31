@@ -127,8 +127,15 @@ class frontProductCon extends Controller
         if($checkCartProduct>0){
             return back()->with('dangerMessage','This product is alerady exist in the cart');
         }
+
+        if(Auth::check()){
+            $user_id = Auth::user()->id;
+        }else{
+            $user_id = 0;
+        }
         Cart::create([
             'session_id'=>$session_id,
+            'user_id'=>$user_id,
             'product_id'=>$data['product_id'],
             'size'=>$data['size'],
             'qunatity'=>$data['quantity'],

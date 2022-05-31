@@ -80,7 +80,7 @@ Route::prefix('/admin')->group(function(){
 
 $catUrls = category::select('url')->get()->pluck('url')->toArray();
 foreach($catUrls as $url){
-    Route::get('/'.$url,[frontProductCon::class,'pageListing']);
+    Route::get($url,[frontProductCon::class,'pageListing']);
 };
 
 Route::get('/',[indexCon::class,'index']);

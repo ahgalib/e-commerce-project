@@ -9,7 +9,7 @@ $sections = section::sections();
 						<li class="subMenu"><a>{{$section['name']}}</a>
 							@foreach($section['categories'] as $category)
 								<ul>
-									<li><a href="products.blade.php"><i class="icon-chevron-right"></i><strong>{{$category['category_name']}}</strong></a></li>
+									<li><a href="/products.blade.php"><i class="icon-chevron-right"></i><strong>{{$category['category_name']}}</strong></a></li>
 									@foreach($category['subcategories'] as $subCateogry)
 										<li><a href="products.blade.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$subCateogry['category_name']}}</a></li>
 									@endforeach

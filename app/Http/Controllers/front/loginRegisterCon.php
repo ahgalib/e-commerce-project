@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
+use Session;
+use App\Models\Cart;
 
 class loginRegisterCon extends Controller
 {
@@ -27,6 +29,12 @@ class loginRegisterCon extends Controller
         ]);
         $creads = $request->only('email','password');
         if(Auth::attempt($creads)){
+            //update session_id to user_id in the cart
+            if(!empty(Session::get('session_id'))){
+                $user_id = Auth::user()->id;
+                $session_id = Session::get('session_id');
+                Cart::where('session_id',$session_id)->update(['user_id'=>$user_id]);
+            }
             return redirect('/cart');
         }
         return redirect('/cart');
@@ -40,16 +48,18 @@ class loginRegisterCon extends Controller
         ]);
         $creads = $request->only('email','password');
         if(Auth::attempt($creads)){
+            //update session_id to user_id in the cart
+            //$session_id = Session::get('session_id');
+            // if(!empty(Session::get('session_id'))){
+            //     $user_id = Auth::user()->id;
+            //     Cart::where('session_id',Session::get('session_id'))->update(['user_id'=>$user_id]);
+            // }
             return redirect('/cart');
         }else{
                  return back()->with('error','your creadintial are not match');
         }
         
-        // if(User::where(['email'=>$data['email'],'password'=>$data['password']])){
-        //     return redirect('/cart');
-        // }else{
-        //     return back()->with('error','your creadintial are not match');
-        // }
+    
 
     }
 
