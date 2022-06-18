@@ -139,5 +139,13 @@ $(document).ready(function(){
         });
     })
 
+    $(qtyMinus).on('click',()=>{
+       
+            var qty = $(this).val()
+            alert(qty)
+       
+        
+    })
+
 })
 
