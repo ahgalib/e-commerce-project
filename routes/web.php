@@ -101,3 +101,5 @@ Route::get('login',[LoginRegisterCon::class,'loginPage']);
 Route::post('/userRegister',[LoginRegisterCon::class,'userRegister']);
 Route::post('/userLogin',[LoginRegisterCon::class,'userLogin']);
 Route::get('logout',[LoginRegisterCon::class,'userLogout']);
+//update cart
+Route::post('/ajaxCartUpdateProduct',[frontProductCon::class,'updateCart']);

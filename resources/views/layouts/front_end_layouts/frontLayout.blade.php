@@ -7,6 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	
+	
 	<!-- Front style -->
 	<link id="callCss" rel="stylesheet" href="{{ url('frontEnd/css/front.min.css')}}" media="screen"/>
 	<link href="{{ url('frontEnd/css/base.css')}}" rel="stylesheet" media="screen"/>

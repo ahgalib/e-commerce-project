@@ -2,6 +2,12 @@ $(document).ready(function(){
     // $("#sort").on('change',function(){
     //     this.form.submit();
     // });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $("#sort").on('change',function(){
         var fabric = getFilter('fabric');
         var sleeve = getFilter('sleeve');
@@ -139,12 +145,42 @@ $(document).ready(function(){
         });
     })
 
-    $(qtyMinus).on('click',()=>{
+    $(document).on('click','.btnUpdateItem',function(){
+        if($(this).hasClass('qtyMinus')){
+           // alert("good")
+           var qty = $(this).prev().val();
+           //alert(qty)
+           if(qty <= 1){
+            alert("Item quantity must be 1")
+           }else{
+            var newQty = parseInt(qty) -1
+            //alert(newQty)
+           }
+        }
+        if($(this).hasClass('qtyPlus')){
+            var qty = $(this).prev().prev().val();
+            //alert(qty)
+            var newQty = parseInt(qty) + 1
+            //alert(newQty)
+            
+        }
+        var cartId = $(this).attr('data-cartId')
+       // alert(cartId)
+
+        $.ajax({
+            type:'POST',
+            url:'/ajaxCartUpdateProduct',
+            _token: "{{ csrf_token() }}",
+            //headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data:{"id":cartId,"quantity":newQty},
+            success:function(resp){
+                alert(resp);
+            },error:function(){
+                alert("there are some error");
+            }
+        })
        
-            var qty = $(this).val()
-            alert(qty)
        
-        
     })
 
 })

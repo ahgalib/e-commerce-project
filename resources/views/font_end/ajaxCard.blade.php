@@ -1,4 +1,7 @@
 <?php use App\Models\Cart; ?>
+
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+
 <table class="table table-bordered">
         <thead>
         <tr>
@@ -20,9 +23,10 @@
               <td>{{$cartInfo['product']['description']}}<br/>Color : {{$cartInfo['product']['product_color']}}</td>
               <td>
                 <div class="input-append">
-                    <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="{{$cartInfo['qunatity']}}">
-                    <button class="btn  qtyMinus" data-id="{{$cartInfo['id']}}" value="{{$cartInfo['qunatity']}}"><i class="icon-minus"></i></button>
-                    <button class="btn btnUpdateItem qtyPlus" type="button" data-id="{{$cartInfo['id']}}"><i class="icon-plus"></i></button>
+                 
+                    <input class="span1 inQunt" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="{{$cartInfo['qunatity']}}">
+                    <button class="btn btnUpdateItem qtyMinus" type="button" data-cartId="{{$cartInfo['id']}}"><i class="icon-minus"></i></button>
+                    <button class="btn btnUpdateItem qtyPlus" type="button" data-cartId="{{$cartInfo['id']}}"><i class="icon-plus"></i></button>
                     <button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				
                 </div>
               </td>

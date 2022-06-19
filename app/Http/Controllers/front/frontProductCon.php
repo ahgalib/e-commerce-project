@@ -149,4 +149,15 @@ class frontProductCon extends Controller
         return view('font_end.cart',compact('cartItems'));
     }
 
+    public function updateCart(Request $req){
+        if($req->ajax()){
+            $data = $req->all();
+            //echo "<pre>";print_r($data);die;
+            Cart::where('id',$data['cartId'])->update(['quantity'=>$data['newQty']]);
+            $cartItems = Cart::userCartItems();
+           // return ('font_end.ajaxCard',compact('cartItems'));
+           return response()->json(['view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))]);
+        }
+    }
+
 }
