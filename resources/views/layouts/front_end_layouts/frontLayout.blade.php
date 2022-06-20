@@ -81,6 +81,7 @@
 @include('layouts.front_end_layouts.footer')
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
 <script src="{{url('frontEnd/js/jquery.js') }}" type="text/javascript"></script>
+
 <script src="{{url('frontEnd/js/front.min.js') }}" type="text/javascript"></script>
 <script src="{{url('frontEnd/js/google-code-prettify/prettify.js') }}"></script>
 
