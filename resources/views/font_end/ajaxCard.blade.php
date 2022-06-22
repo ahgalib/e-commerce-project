@@ -25,8 +25,8 @@
                 <div class="input-append">
                  
                     <input class="span1 inQunt" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="{{$cartInfo['qunatity']}}">
-                    <button class="btn btnUpdateItem qtyMinus" type="button" data-cartId="{{$cartInfo['id']}}"><i class="icon-minus"></i></button>
-                    <button class="btn btnUpdateItem qtyPlus" type="button" data-cartId="{{$cartInfo['id']}}"><i class="icon-plus"></i></button>
+                    <button class="btn btnUpdateItem qtyMinus" type="button" cartId="{{$cartInfo['id']}}"><i class="icon-minus"></i></button>
+                    <button class="btn btnUpdateItem qtyPlus" type="button" cartId="{{$cartInfo['id']}}"><i class="icon-plus"></i></button>
                     <button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				
                 </div>
               </td>

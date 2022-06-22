@@ -164,7 +164,7 @@ $(document).ready(function(){
             //alert(newQty)
             
         }
-        var cartId = $(this).attr('data-cartId')
+        var cartId = $(this).attr('cartId')
        // alert(cartId)
 
         $.ajax({
@@ -174,7 +174,7 @@ $(document).ready(function(){
             //headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data:{"id":cartId,"quantity":newQty},
             success:function(resp){
-                alert(resp);
+                $("#carditem").html(resp.view)
             },error:function(){
                 alert("there are some error");
             }

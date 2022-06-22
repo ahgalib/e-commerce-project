@@ -11,6 +11,7 @@ use App\Models\ProductAttribute;
 use App\Models\Cart;
 use Session;
 use Auth;
+use Illuminate\Support\Facades\View;
 class frontProductCon extends Controller
 {
     public function pageListing(Request $request){
@@ -153,7 +154,7 @@ class frontProductCon extends Controller
         if($req->ajax()){
             $data = $req->all();
             //echo "<pre>";print_r($data);die;
-            Cart::where('id',$data['cartId'])->update(['quantity'=>$data['newQty']]);
+            Cart::where('id',$data['id'])->update(['qunatity'=>$data['quantity']]);
             $cartItems = Cart::userCartItems();
            // return ('font_end.ajaxCard',compact('cartItems'));
            return response()->json(['view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))]);
