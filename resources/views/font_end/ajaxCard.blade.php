@@ -1,4 +1,5 @@
 <?php use App\Models\Cart; ?>
+<?php use App\Models\Product; ?>
 
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -17,7 +18,7 @@
         <tbody>
 			<?php $total_price = 0; ?>
         @foreach($cartItems as $cartInfo)
-		<?php $attrProPrice = Cart::ArrtibuteProductPrice($cartInfo['product_id'],$cartInfo['size']);  ?>
+		<?php $attrProPrice = Product::getProductAttributePrice($cartInfo['product_id'],$cartInfo['size']);  ?>
           <tr>
               <td> <img width="60" src="storage/{{$cartInfo['product']['main_image']}}" alt=""/></td>
               <td>{{$cartInfo['product']['description']}}<br/>Color : {{$cartInfo['product']['product_color']}}</td>
@@ -30,14 +31,14 @@
                     <button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>				
                 </div>
               </td>
-              <td>{{$attrProPrice}}</td>
-              <td>Rs.0.00</td>
+              <td>{{$attrProPrice['product_price']}}</td>
+              <td>{{$attrProPrice['discount'] * $cartInfo['qunatity']}}</td>
              
-              <td> {{$attrProPrice * $cartInfo['qunatity'] }}
+              <td> {{$attrProPrice['final_price'] * $cartInfo['qunatity'] }}
 			  
 			  </td>
           </tr>
-		  <?php $total_price = $total_price + ($attrProPrice * $cartInfo['qunatity']);?>
+		  <?php $total_price = $total_price + ($attrProPrice['final_price'] * $cartInfo['qunatity']);?>
         @endforeach
         
         <tr>

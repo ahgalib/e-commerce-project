@@ -56,18 +56,21 @@ class Product extends Model
        return $discountedPrice;
     }
 
-    // public function getProductAttributePrice($product_id,$size){
-    //     $attributePrice = ProductAttribute::where(['product_id'=>$product_id,'size'=>$size])->first()->toArray();
-    //     $productDiscount = Product::select('product_discount','category_id')->where('id',$product_id)->first()->toArray();
-    //     $categoryDiscount = category::select('category_discount')->where('id',$productDiscount['category_id'])->first()->toArray();
-    //     if($productDiscount['product_discount']>0){
-    //         $discounted_Price = $attributePrice['price'] - ($attributePrice['price'] * $productDiscount['product_discount'] / 100);
-    //     }else if( $categoryDiscount['category_discount'] > 0){
-    //         $discounted_Price =  $attributePrice['price']  - ($productDiscount['product_price'] * $categoryDiscount['category_discount']/100);
-    //    }else{
-    //        $discounted_Price = 0;
-    //    }
-    //    return array('product_price'=>$attributePrice['price'],'discounted_Price'=>$discounted_Price);
+    public function getProductAttributePrice($product_id,$size){
+        $attributePrice = ProductAttribute::where(['product_id'=>$product_id,'size'=>$size])->first()->toArray();
+        $productDiscount = Product::select('product_discount','category_id')->where('id',$product_id)->first()->toArray();
+        $categoryDiscount = category::select('category_discount')->where('id',$productDiscount['category_id'])->first()->toArray();
+        if($productDiscount['product_discount']>0){
+            $final_price = $attributePrice['price'] - ($attributePrice['price'] * $productDiscount['product_discount'] / 100);
+            $discount =  $attributePrice['price'] - $final_price;
+        }else if( $categoryDiscount['category_discount'] > 0){
+            $final_price =  $attributePrice['price']  - ($attributePrice['price'] * $categoryDiscount['category_discount']/100);
+            $discount =  $attributePrice['price'] - $final_price;
+       }else{
+           $final_price = $attributePrice['price'];
+           $discount = 0;
+       }
+       return array('product_price'=>$attributePrice['price'],'final_price'=>$final_price,'discount'=>$discount);
 
-    // }
+    }
 }

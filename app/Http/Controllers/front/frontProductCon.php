@@ -158,6 +158,7 @@ class frontProductCon extends Controller
             $cartItems = Cart::userCartItems();
            // return ('font_end.ajaxCard',compact('cartItems'));
            return response()->json(['view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))]);
+          
         }
     }
 
