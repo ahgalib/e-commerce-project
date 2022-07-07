@@ -103,3 +103,5 @@ Route::post('/userLogin',[LoginRegisterCon::class,'userLogin']);
 Route::get('logout',[LoginRegisterCon::class,'userLogout']);
 //update cart
 Route::post('/ajaxCartUpdateProduct',[frontProductCon::class,'updateCart']);
+//delete cart item
+Route::post('/deleteCartProduct',[frontProductCon::class,'deleteCartItem']);

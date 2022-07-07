@@ -181,7 +181,24 @@ $(document).ready(function(){
         })
        
        
-    })
+    });
+
+    $(document).on("click",".deleteCartProduct",function(){
+        let cartId = $(this).attr("cartId");
+        $.ajax({
+            url:'/deleteCartProduct',
+            _token: "{{ csrf_token() }}",
+            type:'post',
+            data:{cartId:cartId},
+            success:function(resp){
+                $("#carditem").html(resp.view)
+            },error:function(){
+                alert("error")
+            }
+        })
+    });
+
+   
 
 })
 

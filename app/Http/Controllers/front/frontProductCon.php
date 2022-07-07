@@ -162,4 +162,16 @@ class frontProductCon extends Controller
         }
     }
 
+    public function deleteCartItem(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            //echo "<pre>";print_r($data);die;
+            Cart::where('id',$data['cartId'])->delete();
+            $cartItems = Cart::userCartItems();
+            return response()->json([
+                'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
+            ]);
+        }
+    }
+
 }
