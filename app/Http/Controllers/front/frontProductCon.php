@@ -156,8 +156,12 @@ class frontProductCon extends Controller
             //echo "<pre>";print_r($data);die;
             Cart::where('id',$data['id'])->update(['qunatity'=>$data['quantity']]);
             $cartItems = Cart::userCartItems();
+            $totalcartItems = Cart::totalCartItems();
            // return ('font_end.ajaxCard',compact('cartItems'));
-           return response()->json(['view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))]);
+           return response()->json([
+                'totalcartItems'=>$totalcartItems,
+                'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
+            ]);
           
         }
     }
@@ -167,8 +171,10 @@ class frontProductCon extends Controller
             $data = $request->all();
             //echo "<pre>";print_r($data);die;
             Cart::where('id',$data['cartId'])->delete();
+          
             $cartItems = Cart::userCartItems();
             return response()->json([
+              
                 'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
             ]);
         }

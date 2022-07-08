@@ -112,6 +112,20 @@
                 </a>
               </li>
             </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('admin/cupon') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cupon</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('admin/addCupon') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Cupon</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
          

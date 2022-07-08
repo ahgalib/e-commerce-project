@@ -175,6 +175,7 @@ $(document).ready(function(){
             data:{"id":cartId,"quantity":newQty},
             success:function(resp){
                 $("#carditem").html(resp.view)
+                $(".sumCartProduct").html(resp.totalcartItems)
             },error:function(){
                 alert("there are some error");
             }

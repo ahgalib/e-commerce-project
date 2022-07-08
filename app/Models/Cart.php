@@ -29,4 +29,13 @@ class Cart extends Model
         $attrProPrice = ProductAttribute::select('price')->where(['product_id'=>$product_id,'size'=>$size])->first();
         return $attrProPrice['price'];
     }
+
+    public static function totalCartItems(){
+        if(auth::check()){
+            $cartItems = Cart::where('user_id',auth::user()->id)->sum('qunatity');
+        }else{
+            $cartItems = Cart::where('session_id',Session::get('session_id'))->sum('qunatity');
+        }
+        return $cartItems;
+    }
 }

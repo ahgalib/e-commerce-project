@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\sectionCon;
 use App\Http\Controllers\admin\categoryCon;
 use App\Http\Controllers\admin\productCon;
 use App\Http\Controllers\admin\brandCon;
+use App\Http\Controllers\admin\CuponCon;
 use App\Http\Controllers\front\indexCon;
 use App\Http\Controllers\front\frontProductCon;
 use App\Http\Controllers\front\productDetailsCon;
@@ -74,6 +75,11 @@ Route::prefix('/admin')->group(function(){
        Route::get('/showbrand',[brandCon::class,'showBrandPage']);
        Route::get('/addbrand',[brandCon::class,'showAddBrandPage']);
        Route::post('/saveaBrand',[brandCon::class,'saveBrand']);
+
+       //Cupon
+       Route::get('/cupon',[CuponCon::class,'showCuponPage']);
+       Route::get('/addCupon',[CuponCon::class,'showAddCupon']);
+       Route::post('/saveaddCupon',[CuponCon::class,'saveAddCupon']);
     });
 });
 //FRONT END ROUTE

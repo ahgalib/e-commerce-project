@@ -1,6 +1,8 @@
 <?php 
 use App\Models\section;
+use App\Models\Cart;
 $sections = section::sections();
+$totalcartItems = Cart::totalCartItems();
 ?>
 <div id="header">
 	<div class="container">
@@ -8,7 +10,7 @@ $sections = section::sections();
 			<div class="span6">Welcome!<strong> User</strong></div>
 			<div class="span6">
 				<div class="pull-right">
-					<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Items in your cart </span> </a>
+					<a href="/cart"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i>  <span class="sumCartProduct">{{$totalcartItems}} Item(s) </span> Items in your cart </span> </a>
 				</div>
 			</div>
 		</div>
