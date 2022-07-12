@@ -54,8 +54,8 @@
             <td> Rs.0.00</td>
         </tr>
             <tr>
-            <td colspan="6" style="text-align:right"><strong>TOTAL (Rs.3000 - Rs.0 + Rs.0) =</strong></td>
-            <td class="label label-important" style="display:block"> <strong> Rs.3000.00 </strong></td>
+            <td colspan="6" style="text-align:right"><strong> Grand TOTAL </strong></td>
+            <td class="label label-important" style="display:block"> <strong> Tk {{ $total_price}} </strong></td>
         </tr>
         </tbody>
     </table>
