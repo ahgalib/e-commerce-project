@@ -59,3 +59,26 @@
         </tr>
         </tbody>
     </table>
+
+    <table class="table table-bordered">
+        @if( $total_price > 1000)
+            <h3>You got a cuopon</h3>
+        @endif
+        <tbody>
+            <tr>
+                <td> 
+                    <form class="form-horizontal" action="place_cupon" method="post">
+                        @csrf
+                        <div class="control-group">
+                            <label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
+                            <div class="controls">
+                                <input type="text" class="input-medium" name="cupon_code" placeholder="CODE">
+                                <button type="submit" class="btn"> ADD </button>
+                               
+                            </div>
+                        </div>
+                    </form>
+				</td>
+            </tr>
+        </tbody>
+    </table>

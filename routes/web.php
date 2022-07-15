@@ -111,3 +111,5 @@ Route::get('logout',[LoginRegisterCon::class,'userLogout']);
 Route::post('/ajaxCartUpdateProduct',[frontProductCon::class,'updateCart']);
 //delete cart item
 Route::post('/deleteCartProduct',[frontProductCon::class,'deleteCartItem']);
+//coupon part
+Route::post('/place_cupon',[frontProductCon::class,'cuponPart']);

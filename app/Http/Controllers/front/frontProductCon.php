@@ -9,6 +9,7 @@ use App\Models\category;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use App\Models\Cart;
+use App\Models\CuponCode;
 use Session;
 use Auth;
 use Illuminate\Support\Facades\View;
@@ -146,8 +147,9 @@ class frontProductCon extends Controller
 
     public function showCartPage(){
         $cartItems = Cart::userCartItems();
+        $coupon = CuponCode::all();
         //echo "<pre>";print_r($cartItems);die;
-        return view('font_end.cart',compact('cartItems'));
+        return view('font_end.cart',compact('cartItems','coupon'));
     }
 
     public function updateCart(Request $req){
@@ -178,6 +180,14 @@ class frontProductCon extends Controller
                 'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
             ]);
         }
+    }
+
+    public function cuponPart(Request $request){
+        $cupon_amount = CuponCode::where('cupon_code',$request['cupon_code'])->get('amount')->toArray();
+        //echo "<pre>";print_r($data);die;
+        $cartItems = Cart::userCartItems();
+        return view('font_end.cart',compact('cupon_amount','cartItems'));
+
     }
 
 }
