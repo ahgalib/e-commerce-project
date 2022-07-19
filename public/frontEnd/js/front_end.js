@@ -199,6 +199,26 @@ $(document).ready(function(){
         })
     });
 
+    $("#applyCoupon").submit(()=>{
+       let cupon_code = $("#cupon_code").val();
+       //alert(cupon)
+       $.ajax({
+        url:'/place_cupon',
+        type:'post',
+        data:{cupon_code:cupon_code},
+        success:function(resp){
+            if(resp.message != ""){
+                alert(resp.message)
+            }else if(resp.message == true){
+                $("#carditem").html(resp.view)
+                $(".cupon_amount").html(resp.coupon)
+            }
+        },error:function(){
+            alert("error")
+        }
+       })
+    })
+
    
 
 })

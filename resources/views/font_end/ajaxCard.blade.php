@@ -42,11 +42,11 @@
         @endforeach
         
         <tr>
-            <td colspan="6" style="text-align:right">Total Price:	</td>
+            <td colspan="6" style="text-align:right">Total Price: 	</td>
             <td>Tk {{ $total_price}}</td>
         </tr>
             <tr>
-            <td colspan="6" style="text-align:right">Total Discount:	</td>
+            <td colspan="6" class="cupon_amount" style="text-align:right">Coupon Discount: {{$coupon}}	 </td>
             <td> Rs.0.00</td>
         </tr>
             <tr>
@@ -60,25 +60,34 @@
         </tbody>
     </table>
 
-    <table class="table table-bordered">
-        @if( $total_price > 1000)
-            <h3>You got a cuopon</h3>
-        @endif
-        <tbody>
-            <tr>
-                <td> 
-                    <form class="form-horizontal" action="place_cupon" method="post">
-                        @csrf
-                        <div class="control-group">
-                            <label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
-                            <div class="controls">
-                                <input type="text" class="input-medium" name="cupon_code" placeholder="CODE">
-                                <button type="submit" class="btn"> ADD </button>
-                               
+    @if(Auth::check())
+        <table class="table table-bordered">
+            @if( $total_price > 1000)
+                <h3>You got a cuopon</h3>
+            @endif
+           
+        
+            <tbody>
+                <tr>
+                    <td> 
+                        <form class="form-horizontal" id="applyCoupon" action="javascript:void(0);" method="post">
+                            @csrf
+                            <div class="control-group">
+                                <label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
+                                <div class="controls">
+                                    <input type="text" class="input-medium" name="cupon_code" id="cupon_code" placeholder="CODE" required>
+                                    <button type="submit" class="btn"> ADD </button>
+                                
+                                </div>
                             </div>
-                        </div>
-                    </form>
-				</td>
-            </tr>
-        </tbody>
-    </table>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    @else
+    <div class="text-info p-2">
+        <h3 >Please login to apply your coupon</h3> 
+    </div>
+   
+    @endif
