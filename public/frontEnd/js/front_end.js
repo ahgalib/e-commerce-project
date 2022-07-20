@@ -199,7 +199,7 @@ $(document).ready(function(){
         })
     });
 
-    $("#applyCoupon").submit(()=>{
+    $(document).on('submit',"#applyCoupon",()=>{
        let cupon_code = $("#cupon_code").val();
        //alert(cupon)
        $.ajax({
@@ -209,9 +209,10 @@ $(document).ready(function(){
         success:function(resp){
             if(resp.message != ""){
                 alert(resp.message)
-            }else if(resp.message == true){
+                $(".sumCartProduct").html(resp.totalcartItems)
+                $(".cupon_amount").text(resp.couponAmount)
                 $("#carditem").html(resp.view)
-                $(".cupon_amount").html(resp.coupon)
+                $("#carditem").html(resp.view)
             }
         },error:function(){
             alert("error")

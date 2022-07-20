@@ -155,6 +155,7 @@ class frontProductCon extends Controller
     public function updateCart(Request $req){
         if($req->ajax()){
             $data = $req->all();
+            $coupon = CuponCode::all();
             //echo "<pre>";print_r($data);die;
             Cart::where('id',$data['id'])->update(['qunatity'=>$data['quantity']]);
             $cartItems = Cart::userCartItems();
@@ -162,9 +163,8 @@ class frontProductCon extends Controller
            // return ('font_end.ajaxCard',compact('cartItems'));
            return response()->json([
                 'totalcartItems'=>$totalcartItems,
-                'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
+                'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems','coupon'))
             ]);
-          
         }
     }
 
@@ -173,11 +173,10 @@ class frontProductCon extends Controller
             $data = $request->all();
             //echo "<pre>";print_r($data);die;
             Cart::where('id',$data['cartId'])->delete();
-          
+            $coupon = CuponCode::all();
             $cartItems = Cart::userCartItems();
             return response()->json([
-              
-                'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
+                'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems','coupon'))
             ]);
         }
     }
@@ -192,20 +191,25 @@ class frontProductCon extends Controller
             $coupon =  CuponCode::where('cupon_code',$data['cupon_code'])->count();
             $cartItems = Cart::userCartItems();
             if($coupon == 0){
+               
                 return response()->json(['status'=>false,'message'=>'this coupon is not valide',
                 'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
                 ]);
-            }else if($coupon == 1){
+            }else{
                 $cartItems = Cart::userCartItems();
-              
-                $coupon =  CuponCode::select('amount')->where('cupon_code',$data['cupon_code'])->get()->first()->toArray();
-                // echo "<pre>";print_r($coupon);die;
-               return response()->json(['status'=>true,'coupon'=>$coupon,'message'=>'this coupon is valide',
-               'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems','coupon'))
-               ]);
+                $totalcartItems = Cart::totalCartItems();
+                
+                $couponDetails =  CuponCode::where('cupon_code',$data['cupon_code'])->first();
+                $couponAmount = $couponDetails->amount;
+
+                Session::put('couponAmount',$couponAmount);
+                Session::put('couponCode',$data['cupon_code']);
+                return response()->json([
+                    'status'=>true,'message'=>'this coupon is valide','couponAmount'=>$couponAmount,
+                    'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
+                ]);
               
             }
-            
         }
 
     }

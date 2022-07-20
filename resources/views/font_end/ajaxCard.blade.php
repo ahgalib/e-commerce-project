@@ -46,8 +46,15 @@
             <td>Tk {{ $total_price}}</td>
         </tr>
             <tr>
-            <td colspan="6" class="cupon_amount" style="text-align:right">Coupon Discount: {{$coupon}}	 </td>
-            <td> Rs.0.00</td>
+            <td colspan="6"  style="text-align:right">Coupon Discount:
+  	        </td>
+            <td  class="cupon_amount">
+            @if(Session::has('couponAmount'))
+                Tk.{{Session::get('couponAmount')}}
+            @else
+                tk 0
+            @endif
+         </td>
         </tr>
             <tr>
             <td colspan="6" style="text-align:right">Total Tax:	</td>
@@ -55,18 +62,17 @@
         </tr>
             <tr>
             <td colspan="6" style="text-align:right"><strong> Grand TOTAL </strong></td>
-            <td class="label label-important" style="display:block"> <strong> Tk {{ $total_price}} </strong></td>
+            <td class="label label-important" style="display:block"> <strong> Tk {{ $total_price - Session::get('couponAmount')}} </strong></td>
         </tr>
         </tbody>
     </table>
 
     @if(Auth::check())
         <table class="table table-bordered">
-            @if( $total_price > 1000)
-                <h3>You got a cuopon</h3>
-            @endif
-           
-        
+             <h3>You got a cuopon</h3>
+                @foreach($coupon as $code)
+                <p>{{$code['cupon_code']}}</p>
+                @endforeach
             <tbody>
                 <tr>
                     <td> 
