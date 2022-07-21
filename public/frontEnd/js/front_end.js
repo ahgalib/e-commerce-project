@@ -209,11 +209,15 @@ $(document).ready(function(){
         success:function(resp){
             if(resp.message != ""){
                 alert(resp.message)
-                $(".sumCartProduct").html(resp.totalcartItems)
-                $(".cupon_amount").text(resp.couponAmount)
-                $("#carditem").html(resp.view)
-                $("#carditem").html(resp.view)
             }
+            $(".sumCartProduct").html(resp.totalcartItems)
+            $("#carditem").html(resp.view)
+            if(resp.couponAmount >= 0){
+                $(".cupon_amount").text(resp.couponAmount)
+            }else{
+                $(".cupon_amount").text("tk. 0")
+            }
+            
         },error:function(){
             alert("error")
         }

@@ -188,12 +188,13 @@ class frontProductCon extends Controller
         // return view('font_end.cart',compact('cupon_amount','cartItems'));
         if($request->ajax()){
             $data = $request->all();
-            $coupon =  CuponCode::where('cupon_code',$data['cupon_code'])->count();
+            $couponCount =  CuponCode::where('cupon_code',$data['cupon_code'])->count();
             $cartItems = Cart::userCartItems();
-            if($coupon == 0){
-               
+            $coupon = CuponCode::all();
+            if($couponCount == 0){
+              
                 return response()->json(['status'=>false,'message'=>'this coupon is not valide',
-                'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
+                'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems','coupon'))
                 ]);
             }else{
                 $cartItems = Cart::userCartItems();
@@ -206,7 +207,7 @@ class frontProductCon extends Controller
                 Session::put('couponCode',$data['cupon_code']);
                 return response()->json([
                     'status'=>true,'message'=>'this coupon is valide','couponAmount'=>$couponAmount,
-                    'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems'))
+                    'view'=>(String)View::make('font_end.ajaxCard')->with(compact('cartItems','coupon'))
                 ]);
               
             }
