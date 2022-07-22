@@ -12,6 +12,7 @@ use App\Http\Controllers\front\indexCon;
 use App\Http\Controllers\front\frontProductCon;
 use App\Http\Controllers\front\productDetailsCon;
 use App\Http\Controllers\front\LoginRegisterCon;
+use App\Http\Controllers\front\checkOutCon;
 use App\Models\category;
 
 
@@ -113,3 +114,8 @@ Route::post('/ajaxCartUpdateProduct',[frontProductCon::class,'updateCart']);
 Route::post('/deleteCartProduct',[frontProductCon::class,'deleteCartItem']);
 //coupon part
 Route::post('/place_cupon',[frontProductCon::class,'cuponPart']);
+//checkout page
+Route::get('/checkOut',[checkOutCon::class,'showCheckOutPage']);
+Route::get('/creatDeliveryAddress',[checkOutCon::class,'showDeliveryAddressPage']);
+Route::post('/saveDeliveryAddress',[checkOutCon::class,'saveDeliveryAddress']);
+

@@ -47,8 +47,8 @@ $totalcartItems = Cart::totalCartItems();
 			  </td>
 			  </tr>
             </table> -->		
-	<a href="products.html" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
-	<a href="login.html" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+	<a href="/cart" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+	<a href="/checkOut" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 	
 </div>
 </div></div>

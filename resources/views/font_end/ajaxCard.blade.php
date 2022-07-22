@@ -68,6 +68,7 @@
     </table>
 
     @if(Auth::check())
+        @if($total_price>1000)
         <table class="table table-bordered">
              <h3>You got a cuopon</h3>
                 @foreach($coupon as $code)
@@ -91,6 +92,7 @@
                 </tr>
             </tbody>
         </table>
+        @endif
     @else
     <div class="text-info p-2">
         <h3 >Please login to apply your coupon</h3> 
