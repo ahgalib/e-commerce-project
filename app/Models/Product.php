@@ -56,7 +56,7 @@ class Product extends Model
        return $discountedPrice;
     }
 
-    public function getProductAttributePrice($product_id,$size){
+    public static function getProductAttributePrice($product_id,$size){
         $attributePrice = ProductAttribute::where(['product_id'=>$product_id,'size'=>$size])->first()->toArray();
         $productDiscount = Product::select('product_discount','category_id')->where('id',$product_id)->first()->toArray();
         $categoryDiscount = category::select('category_discount')->where('id',$productDiscount['category_id'])->first()->toArray();
