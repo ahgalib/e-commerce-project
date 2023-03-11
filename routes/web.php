@@ -8,6 +8,8 @@ use App\Http\Controllers\admin\categoryCon;
 use App\Http\Controllers\admin\productCon;
 use App\Http\Controllers\admin\brandCon;
 use App\Http\Controllers\admin\CuponCon;
+use App\Http\Controllers\admin\orderedProductCon;
+//FrontEnd Controller
 use App\Http\Controllers\front\indexCon;
 use App\Http\Controllers\front\frontProductCon;
 use App\Http\Controllers\front\productDetailsCon;
@@ -81,9 +83,11 @@ Route::prefix('/admin')->group(function(){
        Route::get('/cupon',[CuponCon::class,'showCuponPage']);
        Route::get('/addCupon',[CuponCon::class,'showAddCupon']);
        Route::post('/saveaddCupon',[CuponCon::class,'saveAddCupon']);
+       //Orderrd Product
+       Route::get('/orderedProduct',[orderedProductCon::class,'showOrderedProductPage']);
     });
 });
-//FRONT END ROUTE
+//FRONT-END ROUTE
 
 $catUrls = category::select('url')->get()->pluck('url')->toArray();
 foreach($catUrls as $url){
@@ -118,4 +122,7 @@ Route::post('/place_cupon',[frontProductCon::class,'cuponPart']);
 Route::get('/checkOut',[checkOutCon::class,'showCheckOutPage']);
 Route::get('/creatDeliveryAddress',[checkOutCon::class,'showDeliveryAddressPage']);
 Route::post('/saveDeliveryAddress',[checkOutCon::class,'saveDeliveryAddress']);
-
+Route::post('/checkoutForm',[checkOutCon::class,'checkoutForm']);
+//thanks pae
+Route::get('/thanks',[checkOutCon::class,'showThanksPage']);
+Route::get('/showOrderList',[checkOutCon::class,'showOrderListPage']);

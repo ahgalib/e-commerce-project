@@ -90,7 +90,7 @@ class productCon extends Controller
 
         ],array_merge($videoArray??[]));
         return redirect('admin/products');
-            
+
     }
 
     public function showEditProductPage($product){
@@ -125,7 +125,7 @@ class productCon extends Controller
             'fabric'=>'',
             'pattern'=>'',
             'sleeve'=>'',
-            'fit'=>'',           
+            'fit'=>'',
             'occassion'=>'',
             'meta_title'=>'',
             'meta_description'=>'',
@@ -133,12 +133,12 @@ class productCon extends Controller
             'is_featured'=>'',
             'status'=>'',
         ]);
-        
+
         if(request('main_image')){
             $imagePath = request('main_image')->store('product_image','public');
             $imageArray = ['main_image'=>$imagePath];
         }
-       
+
         if(request('product_video')){
             $videoPath = request('product_video')->store('product_video','public');
             $videoArray = ['product_video'=>$videoPath];
@@ -182,7 +182,7 @@ class productCon extends Controller
                     'stock'=>$data['stock'][$key],
                     'status'=>$data['status'][$key],
                 ]);
-               
+
             }
         }
     return back();

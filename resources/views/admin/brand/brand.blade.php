@@ -45,7 +45,7 @@
                                         <tr>
                                             <td>{{$brand->id}}</td>
                                             <td>{{$brand->name}}</td>
-                                            
+
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -64,4 +64,3 @@
 
 
 
-  

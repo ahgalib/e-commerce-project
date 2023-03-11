@@ -45,7 +45,7 @@
                                 <input type="text" class="form-control" name="cupon_code">
                                 <span style="color:red;">@error('cupon_code'){{$message}}@enderror</span>
                             </div>
-                           
+
                             <div class="form-group">
                                 <label>Amount</label>
                                 <input type="text" class="form-control" name="amount">
@@ -56,26 +56,22 @@
                             <div class="form-group">
                                 <label>Cupon Code</label>
                                 <input type="date" class="form-control" name="expiry_date">
-                               
                             </div>
-                            
-                            
                             <button class="btn btn-success mt-3" id="sweetAlert">Add Attribute</button>
                         </form>
-                        
+
                         <!-- /.col -->
                     </div> <!-- /.row -->
                 </div><!-- /.card-body -->
-                   
+
             </div><!-- /.card -->
-            
+
         </div><!-- /.container-fluid -->
     </section><!-- /.content -->
 </div> <!-- /.content-wrapper -->
- 
+
 
   @endsection
 
 
 
-  

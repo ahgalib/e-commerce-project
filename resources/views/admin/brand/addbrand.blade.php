@@ -45,23 +45,20 @@
                                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                 <span style="color:red;">@error('name'){{$message}}@enderror</span>
                             </div>
-                            
+
                             <button class="btn btn-success mt-3" id="sweetAlert">Add Attribute</button>
                         </form>
-                        
+
                         <!-- /.col -->
                     </div> <!-- /.row -->
                 </div><!-- /.card-body -->
-                   
             </div><!-- /.card -->
-            
         </div><!-- /.container-fluid -->
     </section><!-- /.content -->
 </div> <!-- /.content-wrapper -->
- 
+
 
   @endsection
 
 
 
-  

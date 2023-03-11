@@ -125,6 +125,13 @@
                   <p>Add Cupon</p>
                 </a>
               </li>
+              <!-- Ordered Product -->
+              <li class="nav-item">
+                <a href="{{ url('admin/orderedProduct') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ordered Product</p>
+                </a>
+              </li>
             </ul>
           </li>
 
